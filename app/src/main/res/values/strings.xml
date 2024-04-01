@@ -1871,6 +1871,14 @@
     <string name="CexWithdraw_Error_MinimumAmount">The minimum amount you can withdraw is %s</string>
     <string name="CexWithdraw_Error_MaximumAmount">The maximum amount you can withdraw is %s</string>
     <string name="CexWithdraw_Error_WithdrawTitle">Withdraw Failed</string>
-
-
+    <!-- Account description -->
+    <string name="BTC_Address_Desc">BTC Address</string>
+    <string name="EVM_Address_Desc">EVM Address</string>
+    <string name="SOL_Address_Desc">Solana Address</string>
+    <string name="TRX_Address_Desc">Tron Address</string>
+    <string name="TON_Address_Desc">Ton Address</string>
+    <string name="EVM_Private_Key">EVM Private Key</string>
+    <string name="Cex_Desc">Cex</string>
+    <string name="Account_Pub_Key">Account xPubKey</string>
+    <string name="Account_Priv_Key">Account xPrivKey</string>
 </resources>

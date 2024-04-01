@@ -247,26 +247,27 @@ sealed class AccountType : Parcelable {
                     Translator.getString(R.string.ManageAccount_NWords, count)
                 }
             }
-            is BitcoinAddress -> "BTC Address"
-            is EvmAddress -> "EVM Address"
-            is SolanaAddress -> "Solana Address"
-            is TronAddress -> "Tron Address"
-            is TonAddress -> "Ton Address"
-            is EvmPrivateKey -> "EVM Private Key"
+            is BitcoinAddress -> Translator.getString(R.string.BTC_Address_Desc)
+            is EvmAddress -> Translator.getString(R.string.EVM_Address_Desc)
+            is SolanaAddress -> Translator.getString(R.string.SOL_Address_Desc)
+            is TronAddress ->  Translator.getString(R.string.TRX_Address_Desc)
+            is TonAddress ->  Translator.getString(R.string.TON_Address_Desc)
+            is EvmPrivateKey -> Translator.getString(R.string.EVM_Private_Key)
             is HdExtendedKey -> {
                 when (this.hdExtendedKey.derivedType) {
                     HDExtendedKey.DerivedType.Master -> "BIP32 Root Key"
                     HDExtendedKey.DerivedType.Account -> {
                         if (hdExtendedKey.isPublic) {
-                            "Account xPubKey"
+                            Translator.getString(R.string.Account_Pub_Key)
                         } else {
-                            "Account xPrivKey"
+                            Translator.getString(R.string.Account_Priv_Key)
                         }
                     }
                     else -> ""
                 }
             }
-            is Cex -> "Cex"
+
+            is Cex -> Translator.getString(R.string.Cex_Desc)
         }
 
     val supportedDerivations: List<Derivation>
@@ -316,6 +317,7 @@ sealed class AccountType : Parcelable {
             else -> false
         }
 
+    //существует 2 способа восстановления кошелька
     fun evmAddress(chain: Chain) = when (this) {
         is Mnemonic -> Signer.address(seed, chain)
         is EvmPrivateKey -> Signer.address(key)

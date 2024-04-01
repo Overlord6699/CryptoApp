@@ -18,7 +18,6 @@ class AboutViewModel(
     private val systemInfoManager: ISystemInfoManager,
 ) : ViewModel() {
 
-    val githubLink = appConfigProvider.appGithubLink
     val appWebPageLink = appConfigProvider.appWebPageLink
     val twitterLink = appConfigProvider.appTwitterLink
     val appVersion: String

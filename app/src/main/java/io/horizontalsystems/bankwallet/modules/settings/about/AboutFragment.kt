@@ -168,13 +168,8 @@ private fun SettingSections(
     Spacer(Modifier.height(32.dp))
 
     CellUniversalLawrenceSection(
-        listOf({
-            HsSettingCell(
-                R.string.SettingsAboutApp_Github,
-                R.drawable.ic_github_20,
-                onClick = { LinkHelper.openLinkInAppBrowser(context, viewModel.githubLink) }
-            )
-        }, {
+        listOf(
+        {
             HsSettingCell(
                 R.string.SettingsAboutApp_Twitter,
                 R.drawable.ic_twitter_20,
