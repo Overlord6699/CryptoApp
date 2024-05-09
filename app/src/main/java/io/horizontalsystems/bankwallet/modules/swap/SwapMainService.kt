@@ -11,10 +11,14 @@ import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
 
 class SwapMainService(
+    //информация о токене для обмена
     tokenFrom: Token?,
+    //список провайдеров обмена
     private val providers: List<ISwapProvider>,
+    //локальное хранилище
     private val localStorage: ILocalStorage
 ) {
+    //dex для обмена
     var dex: Dex = getDex(tokenFrom)
         private set
 
@@ -22,9 +26,11 @@ class SwapMainService(
         MutableSharedFlow<ISwapProvider>(replay = 1, onBufferOverflow = BufferOverflow.DROP_OLDEST)
     val providerUpdatedFlow = _providerUpdatedFlow.asSharedFlow()
 
+    //список провайдеров, поддерживающих эту сеть обмена
     val availableProviders: List<ISwapProvider>
         get() = providers.filter { it.supports(dex.blockchainType) }.sortedBy { it.title }
 
+    //установка провайдера и сохранение
     fun setProvider(provider: ISwapProvider) {
         if (dex.provider.id != provider.id) {
             dex = Dex(dex.blockchain, provider)
@@ -34,13 +40,17 @@ class SwapMainService(
         }
     }
 
+    //получение DEX для обмена
     private fun getDex(tokenFrom: Token?): Dex {
+        //получение сети обмена
         val blockchain = getBlockchainForToken(tokenFrom)
+        //попытка получить провайдера для сети
         val provider = getSwapProvider(blockchain.type) ?: throw IllegalStateException("No provider found for ${blockchain.name}")
 
         return Dex(blockchain, provider)
     }
 
+    //получение выбранного провайдера (по умолчанию это 1inch)
     private fun getSwapProvider(blockchainType: BlockchainType): ISwapProvider? {
         val providerId = localStorage.getSwapProviderId(blockchainType)
             ?: SwapMainModule.OneInchProvider.id

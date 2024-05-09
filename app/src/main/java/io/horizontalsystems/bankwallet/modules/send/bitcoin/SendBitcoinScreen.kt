@@ -14,6 +14,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
@@ -60,11 +61,13 @@ fun SendBitcoinNavHost(
     sendEntryPointDestId: Int,
     prefilledData: PrefilledData?,
 ) {
+    //контроллер  навигации длля определения порядка экранов
     val navController = rememberNavController()
     NavHost(
         navController = navController,
         startDestination = SendBtcPage,
     ) {
+        // 1)  экран отправки в сети биткойна
         composable(SendBtcPage) {
             SendBitcoinScreen(
                 title,
@@ -76,6 +79,7 @@ fun SendBitcoinNavHost(
                 prefilledData,
             )
         }
+        // 2) экран отправки с более подробными настройками
         composablePage(SendBtcAdvancedSettingsPage) {
             SendBtcAdvancedSettingsScreen(
                 fragmentNavController = fragmentNavController,
@@ -84,6 +88,7 @@ fun SendBitcoinNavHost(
                 amountInputType = amountInputModeViewModel.inputType,
             )
         }
+        // 3) экран подтверждения операции
         composablePopup(TransactionInputsSortInfoPage) { BtcTransactionInputSortInfoScreen { navController.popBackStack() } }
     }
 }

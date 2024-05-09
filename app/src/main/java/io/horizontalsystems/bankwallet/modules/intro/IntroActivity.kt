@@ -83,7 +83,7 @@ private fun IntroScreen(viewModel: IntroViewModel, nightMode: Boolean, closeActi
             state = pagerState,
             verticalAlignment = Alignment.Top,
         ) { index ->
-            SlidingContent(viewModel.slides[index], nightMode)
+            SlidingContent(viewModel.vidgets[index], nightMode)
         }
 
         StaticContent(viewModel, pagerState, closeActivity, pageCount)
@@ -107,7 +107,7 @@ private fun StaticContent(
         Spacer(Modifier.weight(2f))
         Spacer(Modifier.height(326.dp))
         Spacer(Modifier.weight(1f))
-        SliderIndicator(viewModel.slides, pagerState.currentPage)
+        SliderIndicator(viewModel.vidgets, pagerState.currentPage)
         Spacer(Modifier.weight(1f))
         //Text
         Column(
@@ -115,7 +115,7 @@ private fun StaticContent(
                 .height(120.dp)
                 .fillMaxWidth(),
         ) {
-            val title = viewModel.slides[pagerState.currentPage].title
+            val title = viewModel.vidgets[pagerState.currentPage].title
             Crossfade(targetState = title) { titleRes ->
                 title3_leah(
                     modifier = Modifier
@@ -126,8 +126,8 @@ private fun StaticContent(
                 )
             }
             Spacer(Modifier.height(16.dp))
-            val subtitle = viewModel.slides[pagerState.currentPage].subtitle
-            Crossfade(targetState = subtitle) { subtitleRes ->
+            val description = viewModel.vidgets[pagerState.currentPage].description
+            Crossfade(targetState = description) { subtitleRes ->
                 body_grey(
                     text = stringResource(subtitleRes),
                     modifier = Modifier
@@ -194,7 +194,7 @@ private fun SlidingContent(
         Spacer(Modifier.weight(2f))
         Image(
             modifier = Modifier.size(width = 326.dp, height = 326.dp),
-            painter = painterResource(if (nightMode) slideData.imageDark else slideData.imageLight),
+            painter = painterResource(if (nightMode) slideData.darkImage else slideData.lightImage),
             contentDescription = null,
         )
         Spacer(Modifier.weight(1f))

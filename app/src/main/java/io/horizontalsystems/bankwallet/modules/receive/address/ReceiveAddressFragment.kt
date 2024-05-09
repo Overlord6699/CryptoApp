@@ -94,7 +94,9 @@ class ReceiveAddressFragment : BaseComposeFragment() {
 
     @Composable
     override fun GetContent(navController: NavController) {
+        //получение информации о кошельке
         val wallet = arguments?.parcelable<Wallet>(WALLET_KEY)
+        //проверка существования кошелька
         if (wallet == null) {
             Toast.makeText(App.instance, "Wallet parameter is missing", Toast.LENGTH_SHORT).show()
             navController.popBackStack()
@@ -102,11 +104,11 @@ class ReceiveAddressFragment : BaseComposeFragment() {
         }
 
         val viewContent = LocalContext.current
-
+        //создание модели для получения
         val viewModel by viewModels<ReceiveAddressViewModel> {
             ReceiveAddressModule.Factory(wallet)
         }
-
+        //передача данных на экран
         ReceiveAddressScreen(
             title = stringResource(R.string.Deposit_Title, wallet.coin.code),
             uiState = viewModel.uiState,
@@ -124,7 +126,9 @@ class ReceiveAddressFragment : BaseComposeFragment() {
     }
 
     companion object {
-        const val WALLET_KEY = "wallet_key"
+        const val WALLET_KEY = "" +
+                "" +
+                ""
 
         fun params(wallet: Wallet): Bundle {
             return bundleOf(
@@ -166,14 +170,17 @@ fun ReceiveAddressScreen(
             Crossfade(uiState.viewState, label = "") { viewState ->
                 Column {
                     when (viewState) {
+                        //обработка состояния экрана
+
+                        //ошибка
                         is ViewState.Error -> {
                             ListErrorView(stringResource(R.string.SyncError), onErrorClick)
                         }
-
+                        //анимация загрузки
                         ViewState.Loading -> {
                             Loading()
                         }
-
+                        //генерация QR-кода и адреса для пополнения
                         ViewState.Success -> {
                             val qrCodeBitmap = TextHelper.getQrCodeBitmap(uiState.uri)
                             Column(

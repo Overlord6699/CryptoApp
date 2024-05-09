@@ -5,10 +5,12 @@ import io.horizontalsystems.bankwallet.R
 import io.horizontalsystems.bankwallet.core.ILocalStorage
 
 class IntroViewModel(
+    //в конструктор передаётся локальное хранилище
         private val localStorage: ILocalStorage
 ): ViewModel() {
 
-    val slides = listOf(
+    //виджеты на входе в приложение
+    val vidgets = listOf(
         IntroModule.IntroSliderData(
             R.string.Intro_Wallet_Screen2Title,
             R.string.Intro_Wallet_Screen2Description,
@@ -29,7 +31,9 @@ class IntroViewModel(
         ),
     )
 
+    //реакция на завершение онбординга
     fun onStartClicked() {
+        //записывается значение, что онбординг уже был показан
         localStorage.mainShowedOnce = true
     }
 

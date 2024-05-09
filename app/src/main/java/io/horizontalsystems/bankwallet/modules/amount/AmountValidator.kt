@@ -20,15 +20,19 @@ class AmountValidator {
     ) = when {
         coinAmount == null -> null
         coinAmount == BigDecimal.ZERO -> null
+        //проверка баланса монет
         coinAmount > availableBalance -> {
             SendErrorInsufficientBalance(coinCode)
         }
+        // проверка минимальной суммы
         minimumSendAmount != null && coinAmount < minimumSendAmount -> {
             SendErrorMinimumSendAmount(minimumSendAmount)
         }
+        //проверка максимальной суммы
         maximumSendAmount != null && coinAmount > maximumSendAmount -> {
             SendErrorMaximumSendAmount(maximumSendAmount)
         }
+        //проверка нехватки монет на комиссию
         leaveSomeBalanceForFee && coinAmount == availableBalance -> {
             HSCaution(
                 TranslatableString.ResString(R.string.EthereumTransaction_Warning_CoinNeededForFee, coinCode),

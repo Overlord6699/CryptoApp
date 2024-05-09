@@ -54,6 +54,7 @@ class SendFragment : BaseFragment() {
                 ViewCompositionStrategy.DisposeOnLifecycleDestroyed(viewLifecycleOwner)
             )
             try {
+                //заполнение данных
                 val arguments = requireArguments()
                 val wallet = arguments.parcelable<Wallet>(walletKey) ?: throw IllegalStateException("Wallet is Null!")
                 val title = arguments.getString(titleKey) ?: ""
@@ -61,10 +62,12 @@ class SendFragment : BaseFragment() {
                 val predefinedAddress = arguments.getString(predefinedAddressKey)
                 val prefilledData = arguments.getParcelable<PrefilledData>(prefilledAddressDataKey)
 
+                //виджет количества монет
                 val amountInputModeViewModel by navGraphViewModels<AmountInputModeViewModel>(R.id.sendXFragment) {
                     AmountInputModeModule.Factory(wallet.coin.uid)
                 }
 
+                //обработка разлмчных сетей
                 when (wallet.token.blockchainType) {
                     BlockchainType.Bitcoin,
                     BlockchainType.BitcoinCash,
@@ -216,10 +219,15 @@ class SendFragment : BaseFragment() {
         )
 
         fun prepareParams(
+            //кошелёк отправителя
             wallet: Wallet,
+            //следующий экран в колбэке
             sendEntryPointDestId: Int,
+            //название
             title: String,
+            //заполненный непроверенный адрес
             predefinedAddress: String? = null,
+            //заполненные непроверенные данные о количестве монеты и адресе
             prefilledAddressData: PrefilledData? = null,
         ) = bundleOf(
             walletKey to wallet,

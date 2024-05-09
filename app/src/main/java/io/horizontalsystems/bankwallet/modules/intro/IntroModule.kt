@@ -14,10 +14,10 @@ object IntroModule {
     }
 
     data class IntroSliderData(
-        val title: Int,
-        val subtitle: Int,
-        val imageLight: Int,
-        val imageDark: Int
+        val title: Int,  //заголовок
+        val description: Int,  //описание
+        val lightImage: Int, //светлая картинка
+        val darkImage: Int  //тёмная картинка
     )
 
 }
