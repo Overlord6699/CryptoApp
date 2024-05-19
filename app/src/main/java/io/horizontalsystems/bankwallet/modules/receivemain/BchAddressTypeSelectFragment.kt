@@ -9,7 +9,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import io.horizontalsystems.bankwallet.R
 import io.horizontalsystems.bankwallet.core.BaseComposeFragment
-import io.horizontalsystems.core.helpers.HudHelper
+import io.horizontalsystems.core.helpers.HUDManager
 
 class BchAddressTypeSelectFragment : BaseComposeFragment() {
 
@@ -18,7 +18,7 @@ class BchAddressTypeSelectFragment : BaseComposeFragment() {
         val coinUid = arguments?.getString("coinUid")
         
         if (coinUid == null) {
-            HudHelper.showErrorMessage(LocalView.current, R.string.Error_ParameterNotSet)
+            HUDManager.showErrorMessage(LocalView.current, R.string.Error_ParameterNotSet)
             navController.popBackStack()
         } else {
             val viewModel = viewModel<BchAddressTypeSelectViewModel>(

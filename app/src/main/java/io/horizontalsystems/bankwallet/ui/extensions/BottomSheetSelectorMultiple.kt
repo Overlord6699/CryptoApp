@@ -27,7 +27,7 @@ import io.horizontalsystems.bankwallet.ui.compose.components.TextImportantWarnin
 import io.horizontalsystems.bankwallet.ui.compose.components.body_leah
 import io.horizontalsystems.bankwallet.ui.compose.components.subhead2_grey
 import io.horizontalsystems.bankwallet.ui.helpers.TextHelper
-import io.horizontalsystems.core.helpers.HudHelper
+import io.horizontalsystems.core.helpers.HUDManager
 
 @Composable
 fun BottomSheetSelectorMultiple(
@@ -87,7 +87,7 @@ fun BottomSheetSelectorMultiple(
                 items.forEachIndexed { index, item ->
                     val onClick = if (item.copyableString != null) {
                         {
-                            HudHelper.showSuccessMessage(localView, R.string.Hud_Text_Copied)
+                            HUDManager.showSuccessMessage(localView, R.string.Hud_Text_Copied)
                             TextHelper.copyText(item.copyableString)
                         }
                     } else {

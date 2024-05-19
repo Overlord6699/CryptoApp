@@ -49,7 +49,7 @@ import io.horizontalsystems.bankwallet.modules.restoreaccount.restoremenu.Restor
 import io.horizontalsystems.bankwallet.modules.restoreaccount.restoremenu.RestoreMenuViewModel
 import io.horizontalsystems.bankwallet.ui.compose.*
 import io.horizontalsystems.bankwallet.ui.compose.components.*
-import io.horizontalsystems.core.helpers.HudHelper
+import io.horizontalsystems.core.helpers.HUDManager
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -294,7 +294,7 @@ fun RestorePhrase(
             Column {
                 if (isMnemonicPhraseInputFocused && keyboardState == Keyboard.Opened) {
                     SuggestionsBar(wordSuggestions = uiState.wordSuggestions) { wordItem, suggestion ->
-                        HudHelper.vibrate(context)
+                        HUDManager.vibrate(context)
 
                         val cursorIndex = wordItem.range.first + suggestion.length + 1
                         var text = textState.text.replaceRange(wordItem.range, suggestion)

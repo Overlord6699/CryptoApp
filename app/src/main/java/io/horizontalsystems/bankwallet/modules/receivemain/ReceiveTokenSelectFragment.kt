@@ -35,7 +35,7 @@ import io.horizontalsystems.bankwallet.ui.compose.components.SectionUniversalIte
 import io.horizontalsystems.bankwallet.ui.compose.components.VSpacer
 import io.horizontalsystems.bankwallet.ui.compose.components.body_leah
 import io.horizontalsystems.bankwallet.ui.compose.components.subhead2_grey
-import io.horizontalsystems.core.helpers.HudHelper
+import io.horizontalsystems.core.helpers.HUDManager
 import kotlinx.coroutines.launch
 
 class ReceiveTokenSelectFragment : BaseComposeFragment() {
@@ -47,7 +47,7 @@ class ReceiveTokenSelectFragment : BaseComposeFragment() {
         val activeAccount = viewModel.getActiveAccount()
 
         if (activeAccount == null) {
-            HudHelper.showErrorMessage(LocalView.current, "No active account")
+            HUDManager.showErrorMessage(LocalView.current, "No active account")
             navController.popBackStack()
         } else {
             ReceiveTokenSelectScreen(navController, activeAccount)

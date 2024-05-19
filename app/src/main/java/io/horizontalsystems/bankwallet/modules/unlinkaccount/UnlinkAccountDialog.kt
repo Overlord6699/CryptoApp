@@ -32,7 +32,7 @@ import io.horizontalsystems.bankwallet.ui.compose.components.subhead2_leah
 import io.horizontalsystems.bankwallet.ui.extensions.BaseComposableBottomSheetFragment
 import io.horizontalsystems.bankwallet.ui.extensions.BottomSheetHeader
 import io.horizontalsystems.core.findNavController
-import io.horizontalsystems.core.helpers.HudHelper
+import io.horizontalsystems.core.helpers.HUDManager
 import io.horizontalsystems.core.parcelable
 
 class UnlinkAccountDialog : BaseComposableBottomSheetFragment() {
@@ -116,7 +116,7 @@ private fun UnlinkAccountScreen(navController: NavController, account: Account) 
             title = stringResource(viewModel.deleteButtonText),
             onClick = {
                 viewModel.onUnlink()
-                HudHelper.showSuccessMessage(view, doneConfirmationMessage)
+                HUDManager.showSuccessMessage(view, doneConfirmationMessage)
                 navController.popBackStack()
             },
             enabled = unlinkEnabled

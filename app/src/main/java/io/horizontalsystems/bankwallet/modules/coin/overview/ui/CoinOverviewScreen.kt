@@ -58,7 +58,7 @@ import io.horizontalsystems.bankwallet.ui.compose.components.subhead2_grey
 import io.horizontalsystems.bankwallet.ui.helpers.LinkHelper
 import io.horizontalsystems.bankwallet.ui.helpers.TextHelper
 import io.horizontalsystems.core.getNavigationResult
-import io.horizontalsystems.core.helpers.HudHelper
+import io.horizontalsystems.core.helpers.HUDManager
 import io.horizontalsystems.core.parcelable
 import io.horizontalsystems.marketkit.models.FullCoin
 import io.horizontalsystems.marketkit.models.LinkType
@@ -83,14 +83,14 @@ fun CoinOverviewScreen(
 
     viewModel.showHudMessage?.let {
         when (it.type) {
-            HudMessageType.Error -> HudHelper.showErrorMessage(
+            HudMessageType.Error -> HUDManager.showErrorMessage(
                 contenView = view,
                 resId = it.text,
                 icon = it.iconRes,
                 iconTint = R.color.white
             )
 
-            HudMessageType.Success -> HudHelper.showSuccessMessage(
+            HudMessageType.Success -> HUDManager.showSuccessMessage(
                 contenView = view,
                 resId = it.text,
                 icon = it.iconRes,
@@ -209,7 +209,7 @@ fun CoinOverviewScreen(
                                         },
                                         onClickCopy = {
                                             TextHelper.copyText(it)
-                                            HudHelper.showSuccessMessage(view, R.string.Hud_Text_Copied)
+                                            HUDManager.showSuccessMessage(view, R.string.Hud_Text_Copied)
                                         },
                                         onClickExplorer = {
                                             LinkHelper.openLinkInAppBrowser(context, it)

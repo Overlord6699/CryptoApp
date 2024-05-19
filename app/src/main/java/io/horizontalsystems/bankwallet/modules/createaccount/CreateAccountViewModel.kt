@@ -56,22 +56,29 @@ class CreateAccountViewModel(
     var successMessage by mutableStateOf<Int?>(null)
         private set
 
+    //функция генерации кошелька
     fun createAccount() {
         if (passphraseEnabled && passphraseIsInvalid()) {
             return
         }
-
+        //генерация секретной фразы в зависимости от количества слов
         val accountType = mnemonicAccountType(selectedKind.wordsCount)
+        //создание аккаунта
         val account = accountFactory.account(
             accountName,
             accountType,
             AccountOrigin.Created,
+            //бэкап не сделан
             false,
+            //бэкап в файл не сделан
             false,
         )
 
+        //сохранение аккаунта
         accountManager.save(account)
+        //активация некоторых сетей для работы
         activateDefaultWallets(account)
+        //сброс и сохранение базовых настроек для блокчейна
         predefinedBlockchainSettingsProvider.prepareNew(account, BlockchainType.Zcash)
         successMessage = R.string.Hud_Text_Created
     }

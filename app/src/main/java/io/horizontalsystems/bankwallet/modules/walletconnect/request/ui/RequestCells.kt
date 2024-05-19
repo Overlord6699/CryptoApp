@@ -33,7 +33,7 @@ import io.horizontalsystems.bankwallet.ui.compose.components.subhead1_grey
 import io.horizontalsystems.bankwallet.ui.compose.components.subhead1_leah
 import io.horizontalsystems.bankwallet.ui.compose.components.subhead2_grey
 import io.horizontalsystems.bankwallet.ui.helpers.TextHelper
-import io.horizontalsystems.core.helpers.HudHelper
+import io.horizontalsystems.core.helpers.HUDManager
 import io.horizontalsystems.marketkit.models.Token
 
 @Composable
@@ -53,7 +53,7 @@ fun TitleHexValueCell(title: String, valueVisible: String, value: String) {
             title = valueVisible,
             onClick = {
                 TextHelper.copyText(value)
-                HudHelper.showSuccessMessage(localView, R.string.Hud_Text_Copied)
+                HUDManager.showSuccessMessage(localView, R.string.Hud_Text_Copied)
             }
         )
     }

@@ -20,7 +20,7 @@ import io.horizontalsystems.bankwallet.modules.walletconnect.request.signmessage
 import io.horizontalsystems.bankwallet.modules.walletconnect.version2.WC2SendEthereumTransactionRequest
 import io.horizontalsystems.bankwallet.modules.walletconnect.version2.WC2SignMessageRequest
 import io.horizontalsystems.bankwallet.modules.walletconnect.version2.WC2UnsupportedRequest
-import io.horizontalsystems.core.helpers.HudHelper
+import io.horizontalsystems.core.helpers.HUDManager
 
 class WC2RequestFragment : BaseComposeFragment() {
     private val logger = AppLogger("wallet-connect v2")
@@ -51,7 +51,7 @@ class WC2RequestFragment : BaseComposeFragment() {
 
                 sendEvmTransactionViewModel.sendSuccessLiveData.observe(viewLifecycleOwner) { transactionHash ->
                     viewModel.approve(transactionHash)
-                    HudHelper.showSuccessMessage(
+                    HUDManager.showSuccessMessage(
                         requireActivity().findViewById(android.R.id.content),
                         R.string.Hud_Text_Done
                     )
@@ -59,7 +59,7 @@ class WC2RequestFragment : BaseComposeFragment() {
                 }
 
                 sendEvmTransactionViewModel.sendFailedLiveData.observe(viewLifecycleOwner) {
-                    HudHelper.showErrorMessage(requireActivity().findViewById(android.R.id.content), it)
+                    HUDManager.showErrorMessage(requireActivity().findViewById(android.R.id.content), it)
                 }
 
                 SendEthRequestScreen(

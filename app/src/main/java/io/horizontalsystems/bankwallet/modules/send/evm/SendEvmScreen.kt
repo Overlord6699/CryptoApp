@@ -28,7 +28,7 @@ import io.horizontalsystems.bankwallet.modules.send.evm.confirmation.SendEvmConf
 import io.horizontalsystems.bankwallet.modules.sendtokenselect.PrefilledData
 import io.horizontalsystems.bankwallet.ui.compose.ComposeAppTheme
 import io.horizontalsystems.bankwallet.ui.compose.components.ButtonPrimaryYellow
-import io.horizontalsystems.core.helpers.HudHelper
+import io.horizontalsystems.core.helpers.HUDManager
 
 @Composable
 fun SendEvmScreen(
@@ -122,7 +122,7 @@ fun SendEvmScreen(
                             )
                         }
                     } else {
-                        HudHelper.showErrorMessage(view, R.string.Hud_Text_NoInternet)
+                        HUDManager.showErrorMessage(view, R.string.Hud_Text_NoInternet)
                     }
                 },
                 enabled = proceedEnabled

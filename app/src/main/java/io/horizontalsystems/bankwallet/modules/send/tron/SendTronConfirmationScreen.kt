@@ -55,7 +55,7 @@ import io.horizontalsystems.bankwallet.ui.compose.components.subhead1_leah
 import io.horizontalsystems.bankwallet.ui.compose.components.subhead2_grey
 import io.horizontalsystems.bankwallet.ui.compose.components.subhead2_jacob
 import io.horizontalsystems.core.SnackbarDuration
-import io.horizontalsystems.core.helpers.HudHelper
+import io.horizontalsystems.core.helpers.HUDManager
 import kotlinx.coroutines.delay
 
 @Composable
@@ -99,7 +99,7 @@ fun SendTronConfirmationScreen(
     val view = LocalView.current
     when (sendResult) {
         SendResult.Sending -> {
-            HudHelper.showInProcessMessage(
+            HUDManager.showInProcessMessage(
                 view,
                 R.string.Send_Sending,
                 SnackbarDuration.INDEFINITE
@@ -107,7 +107,7 @@ fun SendTronConfirmationScreen(
         }
 
         SendResult.Sent -> {
-            HudHelper.showSuccessMessage(
+            HUDManager.showSuccessMessage(
                 view,
                 R.string.Send_Success,
                 SnackbarDuration.LONG
@@ -115,7 +115,7 @@ fun SendTronConfirmationScreen(
         }
 
         is SendResult.Failed -> {
-            HudHelper.showErrorMessage(view, sendResult.caution.getString())
+            HUDManager.showErrorMessage(view, sendResult.caution.getString())
         }
 
         null -> Unit

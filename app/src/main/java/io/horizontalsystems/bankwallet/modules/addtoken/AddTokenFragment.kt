@@ -44,7 +44,7 @@ import io.horizontalsystems.bankwallet.ui.compose.components.RowUniversal
 import io.horizontalsystems.bankwallet.ui.compose.components.body_leah
 import io.horizontalsystems.bankwallet.ui.compose.components.subhead1_grey
 import io.horizontalsystems.core.SnackbarDuration
-import io.horizontalsystems.core.helpers.HudHelper
+import io.horizontalsystems.core.helpers.HUDManager
 import io.horizontalsystems.marketkit.models.Blockchain
 import kotlinx.coroutines.delay
 
@@ -110,7 +110,7 @@ private fun AddTokenScreen(
 
     LaunchedEffect(uiState.finished) {
         if (uiState.finished) {
-            HudHelper.showSuccessMessage(view, R.string.Hud_Text_Done, SnackbarDuration.LONG)
+            HUDManager.showSuccessMessage(view, R.string.Hud_Text_Done, SnackbarDuration.LONG)
             delay(300)
             closeScreen.invoke()
         }

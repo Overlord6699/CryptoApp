@@ -65,7 +65,7 @@ import io.horizontalsystems.bankwallet.ui.compose.components.VSpacer
 import io.horizontalsystems.bankwallet.ui.compose.components.body_leah
 import io.horizontalsystems.bankwallet.ui.compose.components.subhead2_grey
 import io.horizontalsystems.bankwallet.ui.compose.components.subhead2_lucian
-import io.horizontalsystems.core.helpers.HudHelper
+import io.horizontalsystems.core.helpers.HUDManager
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -170,7 +170,7 @@ private fun RestoreLocalScreen(
 
     LaunchedEffect(uiState.restored) {
         if (uiState.restored) {
-            HudHelper.showSuccessMessage(
+            HUDManager.showSuccessMessage(
                 contenView = view,
                 resId = R.string.Hud_Text_Restored,
                 icon = R.drawable.icon_add_to_wallet_2_24,
@@ -279,7 +279,7 @@ private fun BackupFileItems(
 
     LaunchedEffect(uiState.restored) {
         if (uiState.restored) {
-            HudHelper.showSuccessMessage(
+            HUDManager.showSuccessMessage(
                 contenView = view,
                 resId = R.string.Hud_Text_Restored,
                 icon = R.drawable.icon_add_to_wallet_2_24,

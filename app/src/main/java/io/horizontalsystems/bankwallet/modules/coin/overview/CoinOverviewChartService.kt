@@ -7,7 +7,7 @@ import io.horizontalsystems.bankwallet.core.subscribeIO
 import io.horizontalsystems.bankwallet.entities.Currency
 import io.horizontalsystems.bankwallet.modules.chart.AbstractChartService
 import io.horizontalsystems.bankwallet.modules.chart.ChartIndicatorManager
-import io.horizontalsystems.bankwallet.modules.chart.ChartPointsWrapper
+import io.horizontalsystems.bankwallet.modules.chart.ChartPointsContainer
 import io.horizontalsystems.chartview.ChartViewType
 import io.horizontalsystems.chartview.models.ChartPoint
 import io.horizontalsystems.marketkit.models.HsPeriodType
@@ -84,7 +84,7 @@ class CoinOverviewChartService(
         scope.cancel()
     }
 
-    override fun getAllItems(currency: Currency): Single<ChartPointsWrapper> {
+    override fun getAllItems(currency: Currency): Single<ChartPointsContainer> {
         return getItemsByPeriodType(
             currency = currency,
             periodType = HsPeriodType.ByStartTime(chartStartTime),
@@ -95,7 +95,7 @@ class CoinOverviewChartService(
     override fun getItems(
         chartInterval: HsTimePeriod,
         currency: Currency,
-    ): Single<ChartPointsWrapper> {
+    ): Single<ChartPointsContainer> {
         val periodType = if (indicatorsEnabled) {
             HsPeriodType.ByCustomPoints(chartInterval, chartIndicatorManager.getPointsCount())
         } else {
@@ -113,7 +113,7 @@ class CoinOverviewChartService(
         currency: Currency,
         periodType: HsPeriodType,
         chartInterval: HsTimePeriod?
-    ): Single<ChartPointsWrapper> {
+    ): Single<ChartPointsContainer> {
         val newKey = currency.code
         if (newKey != updatesSubscriptionKey) {
             unsubscribeFromUpdates()
@@ -161,9 +161,9 @@ class CoinOverviewChartService(
         startTimestamp: Long,
         points: List<MarketKitChartPoint>,
         chartInterval: HsTimePeriod?
-    ): ChartPointsWrapper {
-        if (points.isEmpty()) return ChartPointsWrapper(listOf())
-        val latestCoinPrice = marketKit.coinPrice(coinUid, currency.code) ?: return ChartPointsWrapper(listOf())
+    ): ChartPointsContainer {
+        if (points.isEmpty()) return ChartPointsContainer(listOf())
+        val latestCoinPrice = marketKit.coinPrice(coinUid, currency.code) ?: return ChartPointsContainer(listOf())
 
         val pointsAdjusted = points.toMutableList()
         var startTimestampAdjusted = startTimestamp
@@ -204,7 +204,7 @@ class CoinOverviewChartService(
                 )
             }
 
-        return ChartPointsWrapper(items, indicators = indicators)
+        return ChartPointsContainer(items, indicators = indicators)
     }
 
 }

@@ -4,7 +4,7 @@ import io.horizontalsystems.bankwallet.core.managers.CurrencyManager
 import io.horizontalsystems.bankwallet.core.managers.MarketKitWrapper
 import io.horizontalsystems.bankwallet.entities.Currency
 import io.horizontalsystems.bankwallet.modules.chart.AbstractChartService
-import io.horizontalsystems.bankwallet.modules.chart.ChartPointsWrapper
+import io.horizontalsystems.bankwallet.modules.chart.ChartPointsContainer
 import io.horizontalsystems.bankwallet.modules.market.topplatforms.Platform
 import io.horizontalsystems.chartview.ChartViewType
 import io.horizontalsystems.chartview.models.ChartPoint
@@ -24,10 +24,10 @@ class PlatformChartService(
     override fun getItems(
         chartInterval: HsTimePeriod,
         currency: Currency
-    ): Single<ChartPointsWrapper> = try {
+    ): Single<ChartPointsContainer> = try {
         marketKit.topPlatformMarketCapPointsSingle(platform.uid, chartInterval, currency.code)
             .map { info -> info.map { ChartPoint(it.marketCap.toFloat(), it.timestamp) } }
-            .map { ChartPointsWrapper(it) }
+            .map { ChartPointsContainer(it) }
     } catch (e: Exception) {
         Single.error(e)
     }

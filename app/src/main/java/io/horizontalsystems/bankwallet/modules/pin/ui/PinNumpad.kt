@@ -31,7 +31,7 @@ import io.horizontalsystems.bankwallet.ui.compose.ComposeAppTheme
 import io.horizontalsystems.bankwallet.ui.compose.components.ButtonSecondaryDefault
 import io.horizontalsystems.bankwallet.ui.compose.components.ButtonSecondaryYellow
 import io.horizontalsystems.bankwallet.ui.compose.components.VSpacer
-import io.horizontalsystems.core.helpers.HudHelper
+import io.horizontalsystems.core.helpers.HUDManager
 
 
 @Composable
@@ -141,7 +141,7 @@ private fun NumberKey(
             .clickable(
                 enabled = enabled,
                 onClick = {
-                    HudHelper.vibrate(context)
+                    HUDManager.vibrate(context)
                     onClick.invoke(number)
                 }
             ),
@@ -172,7 +172,7 @@ private fun ImageKey(
             .clickable(
                 enabled = visible && enabled,
                 onClick = {
-                    HudHelper.vibrate(context)
+                    HUDManager.vibrate(context)
                     onClick.invoke()
                 }
             )

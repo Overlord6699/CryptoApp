@@ -3,7 +3,7 @@ package io.horizontalsystems.bankwallet.modules.market.tvl
 import io.horizontalsystems.bankwallet.core.managers.CurrencyManager
 import io.horizontalsystems.bankwallet.entities.Currency
 import io.horizontalsystems.bankwallet.modules.chart.AbstractChartService
-import io.horizontalsystems.bankwallet.modules.chart.ChartPointsWrapper
+import io.horizontalsystems.bankwallet.modules.chart.ChartPointsContainer
 import io.horizontalsystems.chartview.ChartViewType
 import io.horizontalsystems.marketkit.models.HsTimePeriod
 import io.reactivex.Single
@@ -27,14 +27,14 @@ class TvlChartService(
     override fun getItems(
         chartInterval: HsTimePeriod,
         currency: Currency
-    ): Single<ChartPointsWrapper> {
+    ): Single<ChartPointsContainer> {
         val chainParam = if (chain == TvlModule.Chain.All) "" else chain.name
         return globalMarketRepository.getTvlGlobalMarketPoints(
             chainParam,
             currency.code,
             chartInterval
         ).map {
-            ChartPointsWrapper(it)
+            ChartPointsContainer(it)
         }
     }
 }

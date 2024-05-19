@@ -49,7 +49,7 @@ import io.horizontalsystems.bankwallet.ui.compose.components.RateText
 import io.horizontalsystems.bankwallet.ui.compose.components.body_leah
 import io.horizontalsystems.bankwallet.ui.compose.components.subhead2_grey
 import io.horizontalsystems.bankwallet.ui.extensions.RotatingCircleProgressView
-import io.horizontalsystems.core.helpers.HudHelper
+import io.horizontalsystems.core.helpers.HUDManager
 
 @Composable
 fun BalanceCardSwipable(
@@ -319,7 +319,7 @@ private fun onSyncErrorClicked(viewItem: BalanceViewItem2, viewModel: BalanceVie
             )
         }
         is BalanceViewModel.SyncError.NetworkNotAvailable -> {
-            HudHelper.showErrorMessage(view, R.string.Hud_Text_NoInternet)
+            HUDManager.showErrorMessage(view, R.string.Hud_Text_NoInternet)
         }
     }
 }

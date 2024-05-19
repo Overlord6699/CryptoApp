@@ -45,7 +45,7 @@ import io.horizontalsystems.bankwallet.ui.compose.components.subhead1_grey
 import io.horizontalsystems.bankwallet.ui.compose.components.subhead2_grey
 import io.horizontalsystems.bankwallet.ui.compose.components.subhead2_leah
 import io.horizontalsystems.core.SnackbarDuration
-import io.horizontalsystems.core.helpers.HudHelper
+import io.horizontalsystems.core.helpers.HUDManager
 import io.horizontalsystems.hodler.LockTimeInterval
 import io.horizontalsystems.marketkit.models.BlockchainType
 import io.horizontalsystems.marketkit.models.Coin
@@ -82,7 +82,7 @@ fun SendConfirmationScreen(
     val view = LocalView.current
     when (sendResult) {
         SendResult.Sending -> {
-            HudHelper.showInProcessMessage(
+            HUDManager.showInProcessMessage(
                 view,
                 R.string.Send_Sending,
                 SnackbarDuration.INDEFINITE
@@ -90,7 +90,7 @@ fun SendConfirmationScreen(
         }
 
         SendResult.Sent -> {
-            HudHelper.showSuccessMessage(
+            HUDManager.showSuccessMessage(
                 view,
                 R.string.Send_Success,
                 SnackbarDuration.LONG
@@ -98,7 +98,7 @@ fun SendConfirmationScreen(
         }
 
         is SendResult.Failed -> {
-            HudHelper.showErrorMessage(view, sendResult.caution.getString())
+            HUDManager.showErrorMessage(view, sendResult.caution.getString())
         }
 
         null -> Unit

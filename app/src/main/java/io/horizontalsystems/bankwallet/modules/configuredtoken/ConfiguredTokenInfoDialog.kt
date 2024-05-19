@@ -39,7 +39,7 @@ import io.horizontalsystems.bankwallet.ui.extensions.BaseComposableBottomSheetFr
 import io.horizontalsystems.bankwallet.ui.extensions.BottomSheetHeaderMultiline
 import io.horizontalsystems.bankwallet.ui.helpers.LinkHelper
 import io.horizontalsystems.core.findNavController
-import io.horizontalsystems.core.helpers.HudHelper
+import io.horizontalsystems.core.helpers.HUDManager
 import io.horizontalsystems.core.parcelable
 import io.horizontalsystems.marketkit.models.Token
 
@@ -117,7 +117,7 @@ private fun ConfiguredTokenInfo(navController: NavController, token: Token) {
                                 title = birthdayHeight,
                                 onClick = {
                                     clipboardManager.setText(AnnotatedString(birthdayHeight))
-                                    HudHelper.showSuccessMessage(view, R.string.Hud_Text_Copied)
+                                    HUDManager.showSuccessMessage(view, R.string.Hud_Text_Copied)
                                 }
                             )
                         }

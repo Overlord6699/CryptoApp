@@ -35,7 +35,7 @@ import io.horizontalsystems.bankwallet.ui.compose.components.CellSingleLineLawre
 import io.horizontalsystems.bankwallet.ui.compose.components.MenuItem
 import io.horizontalsystems.bankwallet.ui.compose.components.TextImportantWarning
 import io.horizontalsystems.bankwallet.ui.compose.components.subhead2_grey
-import io.horizontalsystems.core.helpers.HudHelper
+import io.horizontalsystems.core.helpers.HUDManager
 
 class TransactionDoubleSpendInfoFragment : BaseComposeFragment() {
 
@@ -133,7 +133,7 @@ private fun TransactionHashCell(titleRes: Int, transactionHash: String) {
                 title = transactionHash.shorten(),
                 onClick = {
                     clipboardManager.setText(AnnotatedString(transactionHash))
-                    HudHelper.showSuccessMessage(view, R.string.Hud_Text_Copied)
+                    HUDManager.showSuccessMessage(view, R.string.Hud_Text_Copied)
                 }
             )
         }

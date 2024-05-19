@@ -64,7 +64,7 @@ import io.horizontalsystems.bankwallet.ui.compose.components.VSpacer
 import io.horizontalsystems.bankwallet.ui.compose.components.body_jacob
 import io.horizontalsystems.bankwallet.ui.compose.components.body_leah
 import io.horizontalsystems.bankwallet.ui.compose.components.subhead2_grey
-import io.horizontalsystems.core.helpers.HudHelper
+import io.horizontalsystems.core.helpers.HUDManager
 
 class EvmNetworkFragment : BaseComposeFragment() {
 
@@ -178,7 +178,7 @@ private fun EvmNetworkScreen(
                         }
                     ) {
                         viewModel.onRemoveCustomRpc(it)
-                        HudHelper.showErrorMessage(view, R.string.Hud_Removed)
+                        HUDManager.showErrorMessage(view, R.string.Hud_Removed)
                     }
                 }
 

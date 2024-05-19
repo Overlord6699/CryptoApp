@@ -26,7 +26,7 @@ import io.horizontalsystems.bankwallet.ui.compose.ComposeAppTheme
 import io.horizontalsystems.bankwallet.ui.compose.TranslatableString
 import io.horizontalsystems.bankwallet.ui.compose.components.*
 import io.horizontalsystems.bankwallet.ui.helpers.TextHelper
-import io.horizontalsystems.core.helpers.HudHelper
+import io.horizontalsystems.core.helpers.HUDManager
 import io.horizontalsystems.core.parcelable
 import io.horizontalsystems.hdwalletkit.HDExtendedKey
 import kotlinx.coroutines.launch
@@ -80,7 +80,7 @@ private fun ShowExtendedKeyScreen(
                 onConfirm = {
                     coroutineScope.launch {
                         TextHelper.copyText(viewModel.extendedKey)
-                        HudHelper.showSuccessMessage(view, R.string.Hud_Text_Copied)
+                        HUDManager.showSuccessMessage(view, R.string.Hud_Text_Copied)
                         sheetState.hide()
                     }
                 },
@@ -220,7 +220,7 @@ private fun ShowExtendedKeyScreen(
                     }
                 } else {
                     TextHelper.copyText(viewModel.extendedKey)
-                    HudHelper.showSuccessMessage(view, R.string.Hud_Text_Copied)
+                    HUDManager.showSuccessMessage(view, R.string.Hud_Text_Copied)
                 }
             }
         }

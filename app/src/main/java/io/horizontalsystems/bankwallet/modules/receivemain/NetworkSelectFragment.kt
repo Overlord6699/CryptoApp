@@ -37,7 +37,7 @@ import io.horizontalsystems.bankwallet.ui.compose.components.SectionUniversalIte
 import io.horizontalsystems.bankwallet.ui.compose.components.VSpacer
 import io.horizontalsystems.bankwallet.ui.compose.components.body_leah
 import io.horizontalsystems.bankwallet.ui.compose.components.subhead2_grey
-import io.horizontalsystems.core.helpers.HudHelper
+import io.horizontalsystems.core.helpers.HUDManager
 import io.horizontalsystems.marketkit.models.FullCoin
 import kotlinx.coroutines.launch
 
@@ -48,7 +48,7 @@ class NetworkSelectFragment : BaseComposeFragment() {
         val coinUid = arguments?.getString("coinUid")
 
         if (coinUid == null) {
-            HudHelper.showErrorMessage(LocalView.current, R.string.Error_ParameterNotSet)
+            HUDManager.showErrorMessage(LocalView.current, R.string.Error_ParameterNotSet)
             navController.popBackStack()
         } else {
             val initViewModel = viewModel(initializer = {
@@ -61,7 +61,7 @@ class NetworkSelectFragment : BaseComposeFragment() {
             if (activeAccount != null && fullCoin != null) {
                 NetworkSelectScreen(navController, activeAccount, fullCoin)
             } else {
-                HudHelper.showErrorMessage(LocalView.current, "Active account and/or full coin is null")
+                HUDManager.showErrorMessage(LocalView.current, "Active account and/or full coin is null")
                 navController.popBackStack()
             }
         }

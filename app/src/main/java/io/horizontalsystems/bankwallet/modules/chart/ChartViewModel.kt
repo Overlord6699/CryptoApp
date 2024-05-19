@@ -69,7 +69,7 @@ open class ChartViewModel(
                 disposables.add(it)
             }
 
-        service.chartPointsWrapperObservable
+        service.chartPointsContainerObservable
             .subscribeIO { chartItemsDataState ->
                 chartItemsDataState.viewState?.let {
                     viewState = it
@@ -128,17 +128,17 @@ open class ChartViewModel(
         service.refresh()
     }
 
-    private fun syncChartItems(chartPointsWrapper: ChartPointsWrapper?) {
-        if (chartPointsWrapper == null || chartPointsWrapper.items.isEmpty()) {
+    private fun syncChartItems(chartPointsContainer: ChartPointsContainer?) {
+        if (chartPointsContainer == null || chartPointsContainer.items.isEmpty()) {
             chartHeaderView = null
             chartInfoData = null
 
             return
         }
 
-        val chartData = ChartData(chartPointsWrapper.items, chartPointsWrapper.isMovementChart, false, chartPointsWrapper.indicators)
+        val chartData = ChartData(chartPointsContainer.items, chartPointsContainer.isMovementChart, false, chartPointsContainer.indicators)
 
-        val headerView = if (!chartPointsWrapper.isMovementChart) {
+        val headerView = if (!chartPointsContainer.isMovementChart) {
             val value = valueFormatter.formatValue(service.currency, chartData.sum())
             ChartModule.ChartHeaderView(
                 value = value,
@@ -148,7 +148,7 @@ open class ChartViewModel(
                 extraData = null
             )
         } else {
-            val chartItems = chartPointsWrapper.items
+            val chartItems = chartPointsContainer.items
 
             val latestItem = chartItems.last()
             val lastItemValue = latestItem.value

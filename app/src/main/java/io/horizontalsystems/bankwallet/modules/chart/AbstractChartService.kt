@@ -19,10 +19,10 @@ abstract class AbstractChartService {
 
     protected abstract val currencyManager: CurrencyManager
     protected abstract val initialChartInterval: HsTimePeriod
-    protected open fun getAllItems(currency: Currency): Single<ChartPointsWrapper> {
+    protected open fun getAllItems(currency: Currency): Single<ChartPointsContainer> {
         return Single.error(Exception("Not Implemented"))
     }
-    protected abstract fun getItems(chartInterval: HsTimePeriod, currency: Currency): Single<ChartPointsWrapper>
+    protected abstract fun getItems(chartInterval: HsTimePeriod, currency: Currency): Single<ChartPointsContainer>
 
     protected var chartInterval: HsTimePeriod? = null
         set(value) {
@@ -34,7 +34,7 @@ abstract class AbstractChartService {
         get() = currencyManager.baseCurrency
     val chartTypeObservable = BehaviorSubject.create<Optional<HsTimePeriod>>()
 
-    val chartPointsWrapperObservable = BehaviorSubject.create<Result<ChartPointsWrapper>>()
+    val chartPointsContainerObservable = BehaviorSubject.create<Result<ChartPointsContainer>>()
 
     private var fetchItemsDisposable: Disposable? = null
     private val disposables = CompositeDisposable()
@@ -83,9 +83,9 @@ abstract class AbstractChartService {
         fetchItemsDisposable?.dispose()
         fetchItemsDisposable = itemsSingle
             .subscribeIO({
-                chartPointsWrapperObservable.onNext(Result.success(it))
+                chartPointsContainerObservable.onNext(Result.success(it))
             }, {
-                chartPointsWrapperObservable.onNext(Result.failure(it))
+                chartPointsContainerObservable.onNext(Result.failure(it))
             })
     }
 }

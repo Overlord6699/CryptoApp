@@ -12,7 +12,7 @@ import io.horizontalsystems.core.R
 import io.horizontalsystems.core.SnackbarDuration
 import io.horizontalsystems.core.SnackbarGravity
 
-object HudHelper {
+object HUDManager {
 
     fun showInProcessMessage(
         contenView: View,

@@ -44,7 +44,7 @@ import io.horizontalsystems.bankwallet.ui.compose.components.HsBackButton
 import io.horizontalsystems.bankwallet.ui.compose.components.InfoText
 import io.horizontalsystems.bankwallet.ui.compose.components.VSpacer
 import io.horizontalsystems.bankwallet.ui.compose.components.subhead2_grey
-import io.horizontalsystems.core.helpers.HudHelper
+import io.horizontalsystems.core.helpers.HUDManager
 
 class PersonalSupportFragment : BaseComposeFragment() {
 
@@ -65,13 +65,13 @@ private fun PersonalSupportScreen(navController: NavController) {
 
     LaunchedEffect(uiState.showError) {
         if (uiState.showError) {
-            HudHelper.showErrorMessage(view, R.string.Settings_PersonalSupport_Requestfailed)
+            HUDManager.showErrorMessage(view, R.string.Settings_PersonalSupport_Requestfailed)
             viewModel.errorShown()
         }
     }
     LaunchedEffect(uiState.showSuccess) {
         if (uiState.showSuccess) {
-            HudHelper.showSuccessMessage(view, R.string.Settings_PersonalSupport_Requested)
+            HUDManager.showSuccessMessage(view, R.string.Settings_PersonalSupport_Requested)
             viewModel.successShown()
         }
     }

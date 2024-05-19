@@ -37,7 +37,7 @@ import io.horizontalsystems.bankwallet.ui.compose.components.ButtonPrimaryYellow
 import io.horizontalsystems.bankwallet.ui.extensions.BaseComposableBottomSheetFragment
 import io.horizontalsystems.bankwallet.ui.extensions.BottomSheetHeader
 import io.horizontalsystems.core.findNavController
-import io.horizontalsystems.core.helpers.HudHelper
+import io.horizontalsystems.core.helpers.HUDManager
 import io.horizontalsystems.core.parcelable
 
 class SyncErrorDialog : BaseComposableBottomSheetFragment() {
@@ -151,7 +151,7 @@ private fun SyncErrorScreen(navController: NavController, wallet: Wallet, error:
                         context.startActivity(intent)
                     } catch (e: ActivityNotFoundException) {
                         clipboardManager.setText(AnnotatedString(viewModel.reportEmail))
-                        HudHelper.showSuccessMessage(view, R.string.Hud_Text_EmailAddressCopied)
+                        HUDManager.showSuccessMessage(view, R.string.Hud_Text_EmailAddressCopied)
                     }
                 }
             )

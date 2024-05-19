@@ -53,7 +53,7 @@ import io.horizontalsystems.bankwallet.ui.compose.components.SnackbarError
 import io.horizontalsystems.bankwallet.ui.compose.components.headline2_leah
 import io.horizontalsystems.bankwallet.ui.compose.components.subhead1_grey
 import io.horizontalsystems.bankwallet.ui.compose.components.subhead2_grey
-import io.horizontalsystems.core.helpers.HudHelper
+import io.horizontalsystems.core.helpers.HUDManager
 
 class NftHoldingsFragment : BaseComposeFragment() {
 
@@ -116,11 +116,11 @@ fun NftHoldingsScreen(navController: NavController) {
                                             dimmed = false,
                                             onClickTitle = {
                                                 viewModel.toggleBalanceVisibility()
-                                                HudHelper.vibrate(context)
+                                                HUDManager.vibrate(context)
                                             },
                                             onClickSubtitle = {
                                                 viewModel.toggleTotalType()
-                                                HudHelper.vibrate(context)
+                                                HUDManager.vibrate(context)
                                             },
                                         )
                                     }
@@ -132,11 +132,11 @@ fun NftHoldingsScreen(navController: NavController) {
                                             dimmed = totalState.dimmed,
                                             onClickTitle = {
                                                 viewModel.toggleBalanceVisibility()
-                                                HudHelper.vibrate(context)
+                                                HUDManager.vibrate(context)
                                             },
                                             onClickSubtitle = {
                                                 viewModel.toggleTotalType()
-                                                HudHelper.vibrate(context)
+                                                HUDManager.vibrate(context)
                                             },
                                         )
                                     }

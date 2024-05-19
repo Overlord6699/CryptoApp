@@ -11,7 +11,7 @@ import androidx.navigation.NavController
 import io.horizontalsystems.bankwallet.R
 import io.horizontalsystems.bankwallet.core.BaseComposeFragment
 import io.horizontalsystems.bankwallet.modules.pin.ui.PinSet
-import io.horizontalsystems.core.helpers.HudHelper
+import io.horizontalsystems.core.helpers.HUDManager
 import io.horizontalsystems.core.parcelable
 import kotlinx.parcelize.Parcelize
 
@@ -26,7 +26,7 @@ class SetDuressPinFragment : BaseComposeFragment() {
             description = stringResource(id = R.string.SetDuressPin_Description),
             dismissWithSuccess = {
                 viewModel.onDuressPinSet()
-                HudHelper.showSuccessMessage(view, R.string.Hud_Text_Created)
+                HUDManager.showSuccessMessage(view, R.string.Hud_Text_Created)
                 navController.popBackStack(R.id.setDuressPinIntroFragment, true)
             },
             onBackPress = { navController.popBackStack() },

@@ -86,7 +86,7 @@ import io.horizontalsystems.bankwallet.ui.compose.components.subhead2_grey
 import io.horizontalsystems.bankwallet.ui.compose.components.subhead2_leah
 import io.horizontalsystems.bankwallet.ui.compose.components.title3_leah
 import io.horizontalsystems.bankwallet.ui.helpers.TextHelper
-import io.horizontalsystems.core.helpers.HudHelper
+import io.horizontalsystems.core.helpers.HUDManager
 import io.horizontalsystems.core.parcelable
 import java.math.BigDecimal
 
@@ -98,23 +98,31 @@ class ReceiveAddressFragment : BaseComposeFragment() {
         val wallet = arguments?.parcelable<Wallet>(WALLET_KEY)
         //проверка существования кошелька
         if (wallet == null) {
+            //отображение ошибки в виде всплывающего текста
             Toast.makeText(App.instance, "Wallet parameter is missing", Toast.LENGTH_SHORT).show()
+            //возврат на другой экран
             navController.popBackStack()
             return
         }
-
+        //получение текущего экрана
         val viewContent = LocalContext.current
-        //создание модели для получения
+        //создание модели виджета
         val viewModel by viewModels<ReceiveAddressViewModel> {
             ReceiveAddressModule.Factory(wallet)
         }
         //передача данных на экран
         ReceiveAddressScreen(
+            //заголовок
             title = stringResource(R.string.Deposit_Title, wallet.coin.code),
+            //состояние экрана
             uiState = viewModel.uiState,
+            //колбэк на нажатие
             onErrorClick = { viewModel.onErrorClick() },
+            //колбэк на установление значения
             setAmount = { amount -> viewModel.setAmount(amount) },
+            //контроллер навигации
             navController = navController,
+            //колбэк на нажатие кнопки "поделиться"
             onShareClick = { address ->
                 viewContent.startActivity(Intent().apply {
                     action = Intent.ACTION_SEND
@@ -205,7 +213,7 @@ fun ReceiveAddressScreen(
                                             .fillMaxWidth()
                                             .clickable {
                                                 TextHelper.copyText(uiState.uri)
-                                                HudHelper.showSuccessMessage(localView, R.string.Hud_Text_Copied)
+                                                HUDManager.showSuccessMessage(localView, R.string.Hud_Text_Copied)
                                             },
                                         horizontalAlignment = Alignment.CenterHorizontally,
                                     ) {
@@ -365,7 +373,7 @@ private fun ActionButtonsRow(
             buttonText = stringResource(R.string.Button_Copy),
             onClick = {
                 TextHelper.copyText(uri)
-                HudHelper.showSuccessMessage(localView, R.string.Hud_Text_Copied)
+                HUDManager.showSuccessMessage(localView, R.string.Hud_Text_Copied)
             },
         )
     }
@@ -423,7 +431,7 @@ private fun AdditionalDataSection(
                         icon = R.drawable.ic_copy_20,
                         onClick = {
                             TextHelper.copyText(item.value)
-                            HudHelper.showSuccessMessage(localView, R.string.Hud_Text_Copied)
+                            HUDManager.showSuccessMessage(localView, R.string.Hud_Text_Copied)
                         }
                     )
                 }

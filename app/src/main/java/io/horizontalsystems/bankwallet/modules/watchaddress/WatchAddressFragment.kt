@@ -30,7 +30,7 @@ import io.horizontalsystems.bankwallet.ui.compose.components.FormsInputMultiline
 import io.horizontalsystems.bankwallet.ui.compose.components.HeaderText
 import io.horizontalsystems.bankwallet.ui.compose.components.HsBackButton
 import io.horizontalsystems.bankwallet.ui.compose.components.MenuItem
-import io.horizontalsystems.core.helpers.HudHelper
+import io.horizontalsystems.core.helpers.HUDManager
 import kotlinx.coroutines.delay
 
 class WatchAddressFragment : BaseComposeFragment() {
@@ -59,7 +59,7 @@ fun WatchAddressScreen(navController: NavController, popUpToInclusiveId: Int, in
 
     LaunchedEffect(accountCreated) {
         if (accountCreated) {
-            HudHelper.showSuccessMessage(
+            HUDManager.showSuccessMessage(
                 contenView = view,
                 resId = R.string.Hud_Text_AddressAdded,
                 icon = R.drawable.icon_binocule_24,

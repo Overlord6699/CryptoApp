@@ -33,7 +33,7 @@ import io.horizontalsystems.bankwallet.ui.compose.components.HsBackButton
 import io.horizontalsystems.bankwallet.ui.compose.components.InfoText
 import io.horizontalsystems.bankwallet.ui.compose.components.VSpacer
 import io.horizontalsystems.bankwallet.ui.compose.components.body_leah
-import io.horizontalsystems.core.helpers.HudHelper
+import io.horizontalsystems.core.helpers.HUDManager
 import io.horizontalsystems.core.parcelable
 import kotlinx.coroutines.delay
 
@@ -58,7 +58,7 @@ fun RecoveryPhraseVerifyScreen(navController: NavController, account: Account) {
 
     LaunchedEffect(uiState.confirmed) {
         if (uiState.confirmed) {
-            HudHelper.showSuccessMessage(
+            HUDManager.showSuccessMessage(
                 contenView = contenView,
                 resId = R.string.Hud_Text_Verified,
                 icon = R.drawable.icon_check_1_24,
@@ -70,7 +70,7 @@ fun RecoveryPhraseVerifyScreen(navController: NavController, account: Account) {
     }
 
     uiState.error?.message?.let {
-        HudHelper.showErrorMessage(contenView, it)
+        HUDManager.showErrorMessage(contenView, it)
         viewModel.onErrorShown()
     }
 

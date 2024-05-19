@@ -55,16 +55,21 @@ const val TransactionInputsSortInfoPage = "transaction_input_sort_info_settings"
 @Composable
 fun SendBitcoinNavHost(
     title: String,
+    //контроллер навигации внутри экрана
     fragmentNavController: NavController,
     viewModel: SendBitcoinViewModel,
+    //виджет для ввода значений
     amountInputModeViewModel: AmountInputModeViewModel,
+    //конечная точка отправки
     sendEntryPointDestId: Int,
+    //заполненные непроверенные данные
     prefilledData: PrefilledData?,
 ) {
     //контроллер  навигации длля определения порядка экранов
     val navController = rememberNavController()
     NavHost(
         navController = navController,
+        //начальный экран цепочки
         startDestination = SendBtcPage,
     ) {
         // 1)  экран отправки в сети биткойна
@@ -82,6 +87,7 @@ fun SendBitcoinNavHost(
         // 2) экран отправки с более подробными настройками
         composablePage(SendBtcAdvancedSettingsPage) {
             SendBtcAdvancedSettingsScreen(
+                //контроллер навигации внутри экрана
                 fragmentNavController = fragmentNavController,
                 navController = navController,
                 sendBitcoinViewModel = viewModel,
@@ -89,7 +95,8 @@ fun SendBitcoinNavHost(
             )
         }
         // 3) экран подтверждения операции
-        composablePopup(TransactionInputsSortInfoPage) { BtcTransactionInputSortInfoScreen { navController.popBackStack() } }
+        composablePopup(TransactionInputsSortInfoPage)
+            { BtcTransactionInputSortInfoScreen { navController.popBackStack() } }
     }
 }
 

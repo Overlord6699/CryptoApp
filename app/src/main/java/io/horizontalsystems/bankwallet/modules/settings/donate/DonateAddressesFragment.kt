@@ -32,7 +32,7 @@ import io.horizontalsystems.bankwallet.ui.compose.components.RowUniversal
 import io.horizontalsystems.bankwallet.ui.compose.components.VSpacer
 import io.horizontalsystems.bankwallet.ui.compose.components.subhead2_leah
 import io.horizontalsystems.bankwallet.ui.helpers.TextHelper
-import io.horizontalsystems.core.helpers.HudHelper
+import io.horizontalsystems.core.helpers.HUDManager
 
 class DonateAddressesFragment : BaseComposeFragment() {
 
@@ -96,7 +96,7 @@ private fun DonateAddress(
             modifier = Modifier.padding(horizontal = 16.dp),
             onClick = {
                 TextHelper.copyText(address)
-                HudHelper.showSuccessMessage(localView, R.string.Hud_Text_Copied)
+                HUDManager.showSuccessMessage(localView, R.string.Hud_Text_Copied)
             }
         ) {
             Image(
@@ -119,7 +119,7 @@ private fun DonateAddress(
                 contentDescription = stringResource(R.string.Button_Copy),
                 onClick = {
                     TextHelper.copyText(address)
-                    HudHelper.showSuccessMessage(localView, R.string.Hud_Text_Copied)
+                    HUDManager.showSuccessMessage(localView, R.string.Hud_Text_Copied)
                 }
             )
         }

@@ -48,7 +48,7 @@ import io.horizontalsystems.bankwallet.ui.compose.components.HsBackButton
 import io.horizontalsystems.bankwallet.ui.compose.components.RowUniversal
 import io.horizontalsystems.bankwallet.ui.compose.components.VSpacer
 import io.horizontalsystems.bankwallet.ui.compose.components.subhead2_grey
-import io.horizontalsystems.core.helpers.HudHelper
+import io.horizontalsystems.core.helpers.HUDManager
 import io.horizontalsystems.core.parcelable
 
 class CexAssetFragment : BaseComposeFragment() {
@@ -147,7 +147,7 @@ private fun TokenBalanceHeader(
                     indication = null,
                     onClick = {
                         viewModel.toggleBalanceVisibility()
-                        HudHelper.vibrate(context)
+                        HUDManager.vibrate(context)
                     }
                 ),
             text = if (balanceViewItem.primaryValue.visible) balanceViewItem.primaryValue.value else "*****",

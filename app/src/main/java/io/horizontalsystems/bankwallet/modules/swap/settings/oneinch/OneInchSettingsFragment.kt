@@ -32,7 +32,7 @@ import io.horizontalsystems.bankwallet.ui.compose.components.ButtonPrimaryYellow
 import io.horizontalsystems.bankwallet.ui.compose.components.MenuItem
 import io.horizontalsystems.bankwallet.ui.compose.components.ScreenMessageWithAction
 import io.horizontalsystems.bankwallet.ui.compose.components.TextImportantWarning
-import io.horizontalsystems.core.helpers.HudHelper
+import io.horizontalsystems.core.helpers.HUDManager
 import io.horizontalsystems.core.parcelable
 import io.horizontalsystems.core.setNavigationResult
 import java.math.BigDecimal
@@ -164,7 +164,7 @@ private fun OneInchSettingsScreen(
                             )
                             onCloseClick()
                         } else {
-                            HudHelper.showErrorMessage(view, R.string.default_error_msg)
+                            HUDManager.showErrorMessage(view, R.string.default_error_msg)
                         }
                     },
                     enabled = buttonEnabled

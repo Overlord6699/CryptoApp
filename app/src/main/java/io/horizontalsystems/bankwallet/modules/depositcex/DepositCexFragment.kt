@@ -15,7 +15,7 @@ import io.horizontalsystems.bankwallet.core.providers.CexAsset
 import io.horizontalsystems.bankwallet.core.providers.CexDepositNetwork
 import io.horizontalsystems.bankwallet.core.slideFromRight
 import io.horizontalsystems.bankwallet.modules.receive.address.ReceiveAddressScreen
-import io.horizontalsystems.core.helpers.HudHelper
+import io.horizontalsystems.core.helpers.HUDManager
 import io.horizontalsystems.core.parcelable
 
 class DepositCexFragment : BaseComposeFragment() {
@@ -71,7 +71,7 @@ class DepositCexFragment : BaseComposeFragment() {
 
         } else {
             val view = LocalView.current
-            HudHelper.showErrorMessage(view, stringResource(id = R.string.Error_ParameterNotSet))
+            HUDManager.showErrorMessage(view, stringResource(id = R.string.Error_ParameterNotSet))
             navController.popBackStack()
         }
     }

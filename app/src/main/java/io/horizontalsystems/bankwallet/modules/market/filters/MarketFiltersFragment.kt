@@ -28,7 +28,7 @@ import io.horizontalsystems.bankwallet.ui.compose.ComposeAppTheme
 import io.horizontalsystems.bankwallet.ui.compose.TranslatableString
 import io.horizontalsystems.bankwallet.ui.compose.components.*
 import io.horizontalsystems.bankwallet.ui.extensions.BottomSheetHeader
-import io.horizontalsystems.core.helpers.HudHelper
+import io.horizontalsystems.core.helpers.HUDManager
 import kotlinx.coroutines.launch
 import io.horizontalsystems.bankwallet.modules.market.filters.PriceChange as FilterPriceChange
 
@@ -129,7 +129,7 @@ private fun AdvancedSearchScreen(
     }
 
     errorMessage?.let {
-        HudHelper.showErrorMessage(LocalView.current, it.getString())
+        HUDManager.showErrorMessage(LocalView.current, it.getString())
     }
 }
 

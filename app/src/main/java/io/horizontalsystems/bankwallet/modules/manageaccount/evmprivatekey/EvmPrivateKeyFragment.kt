@@ -20,7 +20,7 @@ import io.horizontalsystems.bankwallet.ui.compose.ComposeAppTheme
 import io.horizontalsystems.bankwallet.ui.compose.TranslatableString
 import io.horizontalsystems.bankwallet.ui.compose.components.*
 import io.horizontalsystems.bankwallet.ui.helpers.TextHelper
-import io.horizontalsystems.core.helpers.HudHelper
+import io.horizontalsystems.core.helpers.HUDManager
 import kotlinx.coroutines.launch
 
 class EvmPrivateKeyFragment : BaseComposeFragment(screenshotEnabled = false) {
@@ -61,7 +61,7 @@ private fun EvmPrivateKeyScreen(
                 onConfirm = {
                     coroutineScope.launch {
                         TextHelper.copyText(evmPrivateKey)
-                        HudHelper.showSuccessMessage(view, R.string.Hud_Text_Copied)
+                        HUDManager.showSuccessMessage(view, R.string.Hud_Text_Copied)
                         sheetState.hide()
                     }
                 },

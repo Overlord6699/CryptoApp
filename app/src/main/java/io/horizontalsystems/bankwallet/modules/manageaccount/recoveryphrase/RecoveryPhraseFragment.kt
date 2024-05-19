@@ -22,7 +22,7 @@ import io.horizontalsystems.bankwallet.ui.compose.ComposeAppTheme
 import io.horizontalsystems.bankwallet.ui.compose.TranslatableString
 import io.horizontalsystems.bankwallet.ui.compose.components.*
 import io.horizontalsystems.bankwallet.ui.helpers.TextHelper
-import io.horizontalsystems.core.helpers.HudHelper
+import io.horizontalsystems.core.helpers.HUDManager
 import io.horizontalsystems.core.parcelable
 import kotlinx.coroutines.launch
 
@@ -60,7 +60,7 @@ private fun RecoveryPhraseScreen(
                 onConfirm = {
                     coroutineScope.launch {
                         TextHelper.copyText(viewModel.words.joinToString(" "))
-                        HudHelper.showSuccessMessage(view, R.string.Hud_Text_Copied)
+                        HUDManager.showSuccessMessage(view, R.string.Hud_Text_Copied)
                         sheetState.hide()
                     }
                 },

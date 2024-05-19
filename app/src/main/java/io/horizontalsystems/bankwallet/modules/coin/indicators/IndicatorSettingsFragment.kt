@@ -8,7 +8,7 @@ import io.horizontalsystems.bankwallet.R
 import io.horizontalsystems.bankwallet.core.App
 import io.horizontalsystems.bankwallet.core.BaseComposeFragment
 import io.horizontalsystems.bankwallet.modules.chart.ChartIndicatorSetting
-import io.horizontalsystems.core.helpers.HudHelper
+import io.horizontalsystems.core.helpers.HUDManager
 
 class IndicatorSettingsFragment : BaseComposeFragment() {
 
@@ -19,7 +19,7 @@ class IndicatorSettingsFragment : BaseComposeFragment() {
         }
 
         if (indicatorSetting == null) {
-            HudHelper.showErrorMessage(LocalView.current, R.string.Error_ParameterNotSet)
+            HUDManager.showErrorMessage(LocalView.current, R.string.Error_ParameterNotSet)
             navController.popBackStack()
         } else {
             when (indicatorSetting.type) {

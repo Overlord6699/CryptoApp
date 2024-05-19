@@ -138,27 +138,36 @@ class RestoreMnemonicViewModel(
     fun onProceed() {
         when {
             invalidWordItems.isNotEmpty() -> {
+                //проверка самих слов в фразе, если она не пустая
                 invalidWordRanges = invalidWordItems.map { it.range }
             }
+            //проверка несовпадения количества слов
             wordItems.size !in (Mnemonic.EntropyStrength.values().map { it.wordCount }) -> {
                 error = Translator.getString(R.string.Restore_Error_MnemonicWordCount, wordItems.size)
             }
+
+            //проверка на пустой пароль при дополнительной защите
             passphraseEnabled && passphrase.isBlank() -> {
                 passphraseError = Translator.getString(R.string.Restore_Error_EmptyPassphrase)
             }
             else -> {
                 try {
+                    //получение списка слов
                     val words = wordItems.map { it.word.normalizeNFKD() }
+                    // проверка соответсвия контрольной суммы
                     wordsManager.validateChecksumStrict(words)
 
+                    //создание мнемонического аккаунта
                     accountType = AccountType.Mnemonic(words, passphrase.normalizeNFKD())
                     error = null
                 } catch (checksumException: Exception) {
+                    //сообщение с ошибкой о некорректной контрольной сумме
                     error = Translator.getString(R.string.Restore_InvalidChecksum)
                 }
             }
         }
 
+        //обновление состояния UI
         emitState()
     }
 

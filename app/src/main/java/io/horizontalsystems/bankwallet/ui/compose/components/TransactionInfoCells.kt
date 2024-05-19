@@ -50,7 +50,7 @@ import io.horizontalsystems.bankwallet.ui.compose.ComposeAppTheme
 import io.horizontalsystems.bankwallet.ui.helpers.LinkHelper
 import io.horizontalsystems.bankwallet.ui.helpers.TextHelper
 import io.horizontalsystems.core.helpers.DateHelper
-import io.horizontalsystems.core.helpers.HudHelper
+import io.horizontalsystems.core.helpers.HUDManager
 import io.horizontalsystems.marketkit.models.BlockchainType
 
 @Composable
@@ -215,7 +215,7 @@ fun TransactionInfoAddressCell(title: String, value: String, showAdd: Boolean, b
             icon = R.drawable.ic_copy_20,
             onClick = {
                 TextHelper.copyText(value)
-                HudHelper.showSuccessMessage(view, R.string.Hud_Text_Copied)
+                HUDManager.showSuccessMessage(view, R.string.Hud_Text_Copied)
             }
         )
     }
@@ -384,7 +384,7 @@ fun TransactionInfoTransactionHashCell(transactionHash: String) {
             title = transactionHash.shorten(),
             onClick = {
                 TextHelper.copyText(transactionHash)
-                HudHelper.showSuccessMessage(view, R.string.Hud_Text_Copied)
+                HUDManager.showSuccessMessage(view, R.string.Hud_Text_Copied)
             }
         )
         Spacer(modifier = Modifier.width(8.dp))
@@ -446,7 +446,7 @@ fun TransactionInfoRawTransaction(rawTransaction: () -> String?) {
             onClick = {
                 rawTransaction()?.let {
                     TextHelper.copyText(it)
-                    HudHelper.showSuccessMessage(view, R.string.Hud_Text_Copied)
+                    HUDManager.showSuccessMessage(view, R.string.Hud_Text_Copied)
                 }
             }
         )

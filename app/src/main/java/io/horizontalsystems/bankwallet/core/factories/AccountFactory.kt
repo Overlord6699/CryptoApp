@@ -21,8 +21,10 @@ class AccountFactory(
         backedUp: Boolean,
         fileBackedUp: Boolean
     ): Account {
+        //генерация id клиента через UUID
         val id = UUID.randomUUID().toString()
 
+        //создание объекта аккаунта
         return Account(
             id = id,
             name = name,

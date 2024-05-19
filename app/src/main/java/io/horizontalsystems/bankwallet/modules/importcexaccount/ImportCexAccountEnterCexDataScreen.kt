@@ -33,7 +33,7 @@ import io.horizontalsystems.bankwallet.ui.compose.components.HsBackButton
 import io.horizontalsystems.bankwallet.ui.compose.components.InfoText
 import io.horizontalsystems.bankwallet.ui.compose.components.MenuItem
 import io.horizontalsystems.bankwallet.ui.compose.components.VSpacer
-import io.horizontalsystems.core.helpers.HudHelper
+import io.horizontalsystems.core.helpers.HUDManager
 
 @Composable
 fun ImportCexAccountEnterCexDataScreen(
@@ -80,7 +80,7 @@ private fun ImportBinanceCexAccountScreen(
 
     LaunchedEffect(errorMessage, uiState) {
         errorMessage?.let {
-            HudHelper.showErrorMessage(view, it)
+            HUDManager.showErrorMessage(view, it)
         }
     }
 

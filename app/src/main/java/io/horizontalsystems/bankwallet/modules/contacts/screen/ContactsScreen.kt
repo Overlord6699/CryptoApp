@@ -34,7 +34,7 @@ import io.horizontalsystems.bankwallet.ui.compose.ComposeAppTheme
 import io.horizontalsystems.bankwallet.ui.compose.TranslatableString
 import io.horizontalsystems.bankwallet.ui.compose.components.*
 import io.horizontalsystems.core.SnackbarDuration
-import io.horizontalsystems.core.helpers.HudHelper
+import io.horizontalsystems.core.helpers.HUDManager
 import kotlinx.coroutines.launch
 
 enum class ContactsScreenBottomSheetType {
@@ -61,10 +61,10 @@ fun ContactsScreen(
                     inputStream.bufferedReader().use { br ->
                         viewModel.restore(br.readText())
 
-                        HudHelper.showSuccessMessage(view, R.string.Hud_Text_Done, SnackbarDuration.SHORT)
+                        HUDManager.showSuccessMessage(view, R.string.Hud_Text_Done, SnackbarDuration.SHORT)
                     }
                 } catch (e: Throwable) {
-                    HudHelper.showErrorMessage(view, e.message ?: e.javaClass.simpleName)
+                    HUDManager.showErrorMessage(view, e.message ?: e.javaClass.simpleName)
                 }
             }
         }
@@ -78,10 +78,10 @@ fun ContactsScreen(
                         bw.write(viewModel.backupJson)
                         bw.flush()
 
-                        HudHelper.showSuccessMessage(view, R.string.Hud_Text_Done, SnackbarDuration.SHORT)
+                        HUDManager.showSuccessMessage(view, R.string.Hud_Text_Done, SnackbarDuration.SHORT)
                     }
                 } catch (e: Throwable) {
-                    HudHelper.showErrorMessage(view, e.message ?: e.javaClass.simpleName)
+                    HUDManager.showErrorMessage(view, e.message ?: e.javaClass.simpleName)
                 }
             }
         }

@@ -11,7 +11,7 @@ import io.horizontalsystems.bankwallet.core.slideFromRight
 import io.horizontalsystems.bankwallet.modules.swap.SwapMainModule
 import io.horizontalsystems.bankwallet.modules.tokenselect.TokenSelectScreen
 import io.horizontalsystems.bankwallet.modules.tokenselect.TokenSelectViewModel
-import io.horizontalsystems.core.helpers.HudHelper
+import io.horizontalsystems.core.helpers.HUDManager
 
 class SwapTokenSelectFragment : BaseComposeFragment() {
 
@@ -30,10 +30,10 @@ class SwapTokenSelectFragment : BaseComposeFragment() {
                         )
                     }
                     it.syncingProgress.progress != null -> {
-                        HudHelper.showWarningMessage(view, R.string.Hud_WaitForSynchronization)
+                        HUDManager.showWarningMessage(view, R.string.Hud_WaitForSynchronization)
                     }
                     it.errorMessage != null -> {
-                        HudHelper.showErrorMessage(view, it.errorMessage ?: "")
+                        HUDManager.showErrorMessage(view, it.errorMessage ?: "")
                     }
                 }
             },

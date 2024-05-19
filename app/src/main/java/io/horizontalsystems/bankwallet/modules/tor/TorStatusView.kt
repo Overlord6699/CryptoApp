@@ -24,7 +24,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import io.horizontalsystems.bankwallet.R
 import io.horizontalsystems.bankwallet.ui.compose.ComposeAppTheme
 import io.horizontalsystems.bankwallet.ui.compose.components.ButtonSecondaryTransparent
-import io.horizontalsystems.core.helpers.HudHelper
+import io.horizontalsystems.core.helpers.HUDManager
 import kotlinx.coroutines.delay
 
 @Composable
@@ -99,7 +99,7 @@ fun TorStatusView(
 
     if (viewModel.torViewState.showNetworkConnectionError) {
         val view = LocalView.current
-        HudHelper.showErrorMessage(view, R.string.Hud_Text_NoInternet)
+        HUDManager.showErrorMessage(view, R.string.Hud_Text_NoInternet)
         viewModel.networkErrorShown()
     }
 }

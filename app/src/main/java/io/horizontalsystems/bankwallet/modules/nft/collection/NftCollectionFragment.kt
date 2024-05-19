@@ -28,7 +28,7 @@ import io.horizontalsystems.bankwallet.ui.compose.components.TabItem
 import io.horizontalsystems.bankwallet.ui.compose.components.Tabs
 import io.horizontalsystems.bankwallet.ui.helpers.LinkHelper
 import io.horizontalsystems.bankwallet.ui.helpers.TextHelper
-import io.horizontalsystems.core.helpers.HudHelper
+import io.horizontalsystems.core.helpers.HUDManager
 import io.horizontalsystems.marketkit.models.BlockchainType
 import kotlinx.coroutines.launch
 
@@ -101,7 +101,7 @@ private fun NftCollectionScreen(navController: NavController, viewModel: NftColl
                         viewModel,
                         onCopyText = {
                             TextHelper.copyText(it)
-                            HudHelper.showSuccessMessage(view, R.string.Hud_Text_Copied)
+                            HUDManager.showSuccessMessage(view, R.string.Hud_Text_Copied)
                         },
                         onOpenUrl = {
                             LinkHelper.openLinkInAppBrowser(context, it)

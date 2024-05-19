@@ -50,6 +50,7 @@ class SendFragment : BaseFragment() {
         savedInstanceState: Bundle?
     ): View {
         return ComposeView(requireContext()).apply {
+            //стратегия уничтожения элементов UI
             setViewCompositionStrategy(
                 ViewCompositionStrategy.DisposeOnLifecycleDestroyed(viewLifecycleOwner)
             )
@@ -74,10 +75,13 @@ class SendFragment : BaseFragment() {
                     BlockchainType.ECash,
                     BlockchainType.Litecoin,
                     BlockchainType.Dash -> {
+                        //создание фабрики (паттерн)
                         val factory = SendBitcoinModule.Factory(wallet, predefinedAddress)
+                        //получение модели виджета
                         val sendBitcoinViewModel by navGraphViewModels<SendBitcoinViewModel>(R.id.sendXFragment) {
                             factory
                         }
+                        //запись значений на экран
                         setContent {
                             SendBitcoinNavHost(
                                 title,

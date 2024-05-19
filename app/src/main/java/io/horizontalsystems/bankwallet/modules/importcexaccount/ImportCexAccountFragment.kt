@@ -12,7 +12,7 @@ import io.horizontalsystems.bankwallet.core.composablePage
 import io.horizontalsystems.bankwallet.core.slideFromBottom
 import io.horizontalsystems.bankwallet.modules.info.ErrorDisplayDialogFragment
 import io.horizontalsystems.bankwallet.modules.manageaccounts.ManageAccountsModule
-import io.horizontalsystems.core.helpers.HudHelper
+import io.horizontalsystems.core.helpers.HUDManager
 
 class ImportCexAccountFragment : BaseComposeFragment() {
 
@@ -55,7 +55,7 @@ fun ImportCexAccountNavHost(
                 onNavigateBack = { navController.popBackStack() },
                 onClose = { fragmentNavController.popBackStack() },
                 onAccountCreate = {
-                    HudHelper.showSuccessMessage(
+                    HUDManager.showSuccessMessage(
                         contenView = view,
                         resId = R.string.Hud_Text_Connected,
                         icon = R.drawable.icon_link_24,

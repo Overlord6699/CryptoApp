@@ -63,7 +63,7 @@ import io.horizontalsystems.bankwallet.ui.compose.TranslatableString
 import io.horizontalsystems.bankwallet.ui.compose.components.*
 import io.horizontalsystems.bankwallet.ui.helpers.LinkHelper
 import io.horizontalsystems.core.findNavController
-import io.horizontalsystems.core.helpers.HudHelper
+import io.horizontalsystems.core.helpers.HUDManager
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -210,7 +210,7 @@ private fun AssetContent(
                     context.contentResolver.openOutputStream(uri).use { outputStream ->
                         outputStream?.write(nftFileByteArray)
                     }
-                    HudHelper.showSuccessMessage(view, R.string.Hud_Text_Done)
+                    HUDManager.showSuccessMessage(view, R.string.Hud_Text_Done)
                 }
             }
         }
@@ -394,7 +394,7 @@ private fun AssetContent(
                                     icon = R.drawable.ic_copy_20,
                                     onClick = {
                                         clipboardManager.setText(AnnotatedString(contractAddress))
-                                        HudHelper.showSuccessMessage(view, R.string.Hud_Text_Copied)
+                                        HUDManager.showSuccessMessage(view, R.string.Hud_Text_Copied)
                                     }
                                 )
                                 Spacer(modifier = Modifier.width(16.dp))
@@ -538,7 +538,7 @@ private fun AssetContent(
 
                                 pickerLauncher.launch(intent)
                             } catch (e: Exception) {
-                                HudHelper.showErrorMessage(view, e.message ?: e.javaClass.simpleName)
+                                HUDManager.showErrorMessage(view, e.message ?: e.javaClass.simpleName)
                             }
                         }
                     }

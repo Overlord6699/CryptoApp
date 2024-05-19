@@ -35,7 +35,7 @@ import io.horizontalsystems.bankwallet.ui.compose.components.VSpacer
 import io.horizontalsystems.bankwallet.ui.compose.components.subhead1_leah
 import io.horizontalsystems.bankwallet.ui.compose.components.subhead2_grey
 import io.horizontalsystems.bankwallet.ui.compose.components.subhead2_leah
-import io.horizontalsystems.core.helpers.HudHelper
+import io.horizontalsystems.core.helpers.HUDManager
 
 
 @Composable
@@ -76,7 +76,7 @@ fun AppStatusScreen(
                         onClick = {
                             uiState.appStatusAsText?.let {
                                 clipboardManager.setText(AnnotatedString(it))
-                                HudHelper.showSuccessMessage(localView, R.string.Hud_Text_Copied)
+                                HUDManager.showSuccessMessage(localView, R.string.Hud_Text_Copied)
                             }
                         }
                     )

@@ -51,7 +51,7 @@ import io.horizontalsystems.bankwallet.modules.restoreaccount.RestoreViewModel
 import io.horizontalsystems.bankwallet.modules.restoreaccount.restoremnemonic.SuggestionsBar
 import io.horizontalsystems.bankwallet.ui.compose.*
 import io.horizontalsystems.bankwallet.ui.compose.components.*
-import io.horizontalsystems.core.helpers.HudHelper
+import io.horizontalsystems.core.helpers.HUDManager
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -263,7 +263,7 @@ fun RestorePhraseNonStandard(
                     modifier = Modifier.align(Alignment.BottomCenter),
                     wordSuggestions = uiState.wordSuggestions
                 ) { wordItem, suggestion ->
-                    HudHelper.vibrate(context)
+                    HUDManager.vibrate(context)
 
                     val cursorIndex = wordItem.range.first + suggestion.length + 1
                     var text = textState.text.replaceRange(wordItem.range, suggestion)

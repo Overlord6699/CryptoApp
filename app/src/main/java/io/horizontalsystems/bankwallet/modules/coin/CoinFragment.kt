@@ -23,7 +23,7 @@ import io.horizontalsystems.bankwallet.modules.coin.overview.ui.CoinOverviewScre
 import io.horizontalsystems.bankwallet.ui.compose.ComposeAppTheme
 import io.horizontalsystems.bankwallet.ui.compose.TranslatableString
 import io.horizontalsystems.bankwallet.ui.compose.components.*
-import io.horizontalsystems.core.helpers.HudHelper
+import io.horizontalsystems.core.helpers.HUDManager
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -167,7 +167,7 @@ fun CoinTabs(
         }
 
         viewModel.successMessage?.let {
-            HudHelper.showSuccessMessage(view, it)
+            HUDManager.showSuccessMessage(view, it)
 
             viewModel.onSuccessMessageShown()
         }

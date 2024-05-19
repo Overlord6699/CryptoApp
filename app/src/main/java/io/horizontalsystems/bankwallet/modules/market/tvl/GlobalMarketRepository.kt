@@ -20,24 +20,32 @@ class GlobalMarketRepository(
 
     private var cache: List<DefiMarketInfo> = listOf()
 
-    fun getGlobalMarketPoints(
+    fun getGlobalMarketPointsForGraphic(
         currencyCode: String,
         chartInterval: HsTimePeriod,
-        metricsType: MetricsType
+        type: MetricsType
     ): Single<List<ChartPoint>> {
+        //запрос на получение данных для точек графика
         return marketKit.globalMarketPointsSingle(currencyCode, chartInterval)
             .map { list ->
                 list.map { point ->
-                    val value = when (metricsType) {
+                    val value = when (type) {
+                        //рыночная капитализация
                         MetricsType.TotalMarketCap -> point.marketCap
+                        //доминация биткойна
                         MetricsType.BtcDominance -> point.btcDominance
+                        //объём за сутки
                         MetricsType.Volume24h -> point.volume24h
+                        //рыночная капитализация в DeFi
                         MetricsType.DefiCap -> point.defiMarketCap
+                        //объём средств в DeFi
                         MetricsType.TvlInDefi -> point.tvl
                     }
 
-                    val dominance = if (metricsType == MetricsType.TotalMarketCap) point.btcDominance.toFloat() else null
-                    ChartPoint(value = value.toFloat(), timestamp = point.timestamp, dominance = dominance)
+                    //получение индекса доминации биткойна
+                    val btcDominance = if (type == MetricsType.TotalMarketCap) point.btcDominance.toFloat() else null
+                    //маппинг данных для точек
+                    ChartPoint(value = value.toFloat(), timestamp = point.timestamp, dominance = btcDominance)
                 }
             }
     }

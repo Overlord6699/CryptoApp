@@ -43,7 +43,7 @@ import io.horizontalsystems.bankwallet.ui.compose.components.SelectorDialogCompo
 import io.horizontalsystems.bankwallet.ui.compose.components.SelectorItem
 import io.horizontalsystems.bankwallet.ui.compose.components.body_leah
 import io.horizontalsystems.bankwallet.ui.compose.components.subhead1_grey
-import io.horizontalsystems.core.helpers.HudHelper
+import io.horizontalsystems.core.helpers.HUDManager
 import io.horizontalsystems.hdwalletkit.Language
 import kotlinx.coroutines.delay
 
@@ -57,7 +57,7 @@ fun CreateAccountAdvancedScreen(
 
     LaunchedEffect(viewModel.successMessage) {
         viewModel.successMessage?.let {
-            HudHelper.showSuccessMessage(
+            HUDManager.showSuccessMessage(
                 contenView = view,
                 resId = it,
                 icon = R.drawable.icon_add_to_wallet_24,

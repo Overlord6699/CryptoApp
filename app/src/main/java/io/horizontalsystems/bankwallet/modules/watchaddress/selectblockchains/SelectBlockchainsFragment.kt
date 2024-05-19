@@ -40,7 +40,7 @@ import io.horizontalsystems.bankwallet.ui.compose.components.HsSwitch
 import io.horizontalsystems.bankwallet.ui.compose.components.MenuItem
 import io.horizontalsystems.bankwallet.ui.compose.components.body_leah
 import io.horizontalsystems.bankwallet.ui.compose.components.subhead2_grey
-import io.horizontalsystems.core.helpers.HudHelper
+import io.horizontalsystems.core.helpers.HUDManager
 import io.horizontalsystems.core.parcelable
 import kotlinx.coroutines.delay
 
@@ -88,7 +88,7 @@ private fun SelectBlockchainsScreen(
 
     LaunchedEffect(accountCreated) {
         if (accountCreated) {
-            HudHelper.showSuccessMessage(
+            HUDManager.showSuccessMessage(
                 contenView = view,
                 resId = R.string.Hud_Text_AddressAdded,
                 icon = R.drawable.icon_binocule_24,

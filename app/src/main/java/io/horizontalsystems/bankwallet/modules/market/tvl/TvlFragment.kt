@@ -38,7 +38,7 @@ import io.horizontalsystems.bankwallet.ui.compose.HSSwipeRefresh
 import io.horizontalsystems.bankwallet.ui.compose.Select
 import io.horizontalsystems.bankwallet.ui.compose.TranslatableString
 import io.horizontalsystems.bankwallet.ui.compose.components.*
-import io.horizontalsystems.core.helpers.HudHelper
+import io.horizontalsystems.core.helpers.HUDManager
 
 class TvlFragment : BaseComposeFragment() {
 
@@ -56,7 +56,7 @@ class TvlFragment : BaseComposeFragment() {
             val arguments = CoinFragment.prepareParams(coinUid, "market_tvl")
             navController.slideFromRight(R.id.coinFragment, arguments)
         } else {
-            HudHelper.showWarningMessage(requireView(), R.string.MarketGlobalMetrics_NoCoin)
+            HUDManager.showWarningMessage(requireView(), R.string.MarketGlobalMetrics_NoCoin)
         }
     }
 

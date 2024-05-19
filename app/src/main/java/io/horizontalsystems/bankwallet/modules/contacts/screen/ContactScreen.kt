@@ -32,7 +32,7 @@ import io.horizontalsystems.bankwallet.ui.compose.TranslatableString
 import io.horizontalsystems.bankwallet.ui.compose.components.*
 import io.horizontalsystems.bankwallet.ui.extensions.BottomSheetHeader
 import io.horizontalsystems.core.SnackbarDuration
-import io.horizontalsystems.core.helpers.HudHelper
+import io.horizontalsystems.core.helpers.HUDManager
 import kotlinx.coroutines.launch
 
 enum class ContactScreenBottomSheetType {
@@ -59,7 +59,7 @@ fun ContactScreen(
         if (uiState.closeWithSuccess) {
             focusManager.clearFocus(true)
 
-            HudHelper.showSuccessMessage(view, R.string.Hud_Text_Done, SnackbarDuration.SHORT)
+            HUDManager.showSuccessMessage(view, R.string.Hud_Text_Done, SnackbarDuration.SHORT)
 
             onNavigateToBack()
         }

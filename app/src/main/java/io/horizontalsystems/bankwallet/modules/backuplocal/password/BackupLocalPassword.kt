@@ -34,7 +34,7 @@ import io.horizontalsystems.bankwallet.ui.compose.components.InfoText
 import io.horizontalsystems.bankwallet.ui.compose.components.TextImportantWarning
 import io.horizontalsystems.bankwallet.ui.compose.components.VSpacer
 import io.horizontalsystems.core.SnackbarDuration
-import io.horizontalsystems.core.helpers.HudHelper
+import io.horizontalsystems.core.helpers.HUDManager
 
 @Composable
 fun LocalBackupPasswordScreen(
@@ -58,7 +58,7 @@ fun LocalBackupPasswordScreen(
                             bw.write(backupJson)
                             bw.flush()
 
-                            HudHelper.showSuccessMessage(
+                            HUDManager.showSuccessMessage(
                                 contenView = view,
                                 resId = R.string.LocalBackup_BackupSaved,
                                 duration = SnackbarDuration.SHORT,
@@ -69,7 +69,7 @@ fun LocalBackupPasswordScreen(
                             viewModel.backupFinished()
                         }
                     } catch (e: Throwable) {
-                        HudHelper.showErrorMessage(view, e.message ?: e.javaClass.simpleName)
+                        HUDManager.showErrorMessage(view, e.message ?: e.javaClass.simpleName)
                     }
                 }
             }

@@ -76,7 +76,7 @@ import io.horizontalsystems.bankwallet.ui.compose.components.subhead1_grey
 import io.horizontalsystems.bankwallet.ui.compose.components.subhead2_grey
 import io.horizontalsystems.bankwallet.ui.compose.components.subhead2_jacob
 import io.horizontalsystems.chartview.ChartViewType
-import io.horizontalsystems.core.helpers.HudHelper
+import io.horizontalsystems.core.helpers.HUDManager
 import io.horizontalsystems.marketkit.models.HsTimePeriod
 import kotlinx.coroutines.launch
 
@@ -411,7 +411,7 @@ fun PriceVolChart(
     val context = LocalContext.current
     LaunchedEffect(selectedItem) {
         if (selectedItem != null) {
-            HudHelper.vibrate(context)
+            HUDManager.vibrate(context)
         }
 
         onSelectPoint.invoke(selectedItem)

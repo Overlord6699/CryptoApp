@@ -22,7 +22,7 @@ import io.horizontalsystems.bankwallet.modules.market.ImageSource
 import io.horizontalsystems.bankwallet.ui.compose.ComposeAppTheme
 import io.horizontalsystems.bankwallet.ui.compose.components.*
 import io.horizontalsystems.bankwallet.ui.helpers.TextHelper
-import io.horizontalsystems.core.helpers.HudHelper
+import io.horizontalsystems.core.helpers.HUDManager
 
 class BottomSheetSelectorMultipleDialog(
     private val title: String,
@@ -83,7 +83,7 @@ class BottomSheetSelectorMultipleDialog(
             items.forEachIndexed { index, item ->
                 val onClick = if (item.copyableString != null) {
                     {
-                        HudHelper.showSuccessMessage(localView, R.string.Hud_Text_Copied)
+                        HUDManager.showSuccessMessage(localView, R.string.Hud_Text_Copied)
                         TextHelper.copyText(item.copyableString)
                     }
                 } else {

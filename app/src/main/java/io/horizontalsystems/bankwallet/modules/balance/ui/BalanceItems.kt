@@ -71,7 +71,7 @@ import io.horizontalsystems.bankwallet.ui.compose.components.SelectorDialogCompo
 import io.horizontalsystems.bankwallet.ui.compose.components.SelectorItem
 import io.horizontalsystems.bankwallet.ui.compose.components.VSpacer
 import io.horizontalsystems.bankwallet.ui.compose.components.subhead2_leah
-import io.horizontalsystems.core.helpers.HudHelper
+import io.horizontalsystems.core.helpers.HUDManager
 
 @Composable
 fun NoteWarning(
@@ -205,11 +205,11 @@ fun BalanceItems(
                     totalState = totalState,
                     onClickTitle = {
                         viewModel.toggleBalanceVisibility()
-                        HudHelper.vibrate(context)
+                        HUDManager.vibrate(context)
                     },
                     onClickSubtitle = {
                         viewModel.toggleTotalType()
-                        HudHelper.vibrate(context)
+                        HUDManager.vibrate(context)
                     }
                 )
             }

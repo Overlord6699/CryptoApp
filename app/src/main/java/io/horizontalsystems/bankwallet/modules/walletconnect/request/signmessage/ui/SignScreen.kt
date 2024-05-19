@@ -34,7 +34,7 @@ import io.horizontalsystems.bankwallet.ui.compose.components.MessageToSign
 import io.horizontalsystems.bankwallet.ui.compose.components.RowUniversal
 import io.horizontalsystems.bankwallet.ui.compose.components.TextImportantWarning
 import io.horizontalsystems.bankwallet.ui.compose.components.subhead2_leah
-import io.horizontalsystems.core.helpers.HudHelper
+import io.horizontalsystems.core.helpers.HUDManager
 
 @Composable
 fun SignMessageRequestScreen(
@@ -43,7 +43,7 @@ fun SignMessageRequestScreen(
 ) {
 
     if (viewModel.showSignError) {
-        HudHelper.showErrorMessage(LocalView.current, R.string.Error)
+        HUDManager.showErrorMessage(LocalView.current, R.string.Error)
         viewModel.signErrorShown()
     }
 

@@ -1,6 +1,5 @@
 package io.horizontalsystems.bankwallet.modules.balance.cex
 
-import androidx.compose.animation.*
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -42,7 +41,7 @@ import io.horizontalsystems.bankwallet.ui.compose.ComposeAppTheme
 import io.horizontalsystems.bankwallet.ui.compose.HSSwipeRefresh
 import io.horizontalsystems.bankwallet.ui.compose.components.*
 import io.horizontalsystems.bankwallet.ui.extensions.RotatingCircleProgressView
-import io.horizontalsystems.core.helpers.HudHelper
+import io.horizontalsystems.core.helpers.HUDManager
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
@@ -86,11 +85,11 @@ fun BalanceForAccountCex(navController: NavController, accountViewItem: AccountV
                                 totalState = totalState,
                                 onClickTitle = {
                                     viewModel.toggleBalanceVisibility()
-                                    HudHelper.vibrate(context)
+                                    HUDManager.vibrate(context)
                                 },
                                 onClickSubtitle = {
                                     viewModel.toggleTotalType()
-                                    HudHelper.vibrate(context)
+                                    HUDManager.vibrate(context)
                                 }
                             )
                         }
@@ -305,7 +304,7 @@ fun WalletIconCex(
         if (viewItem.failedIconVisible) {
             val view = LocalView.current
             val clickableModifier = if (viewItem.errorMessage != null) {
-                Modifier.clickable(onClick = { HudHelper.showErrorMessage(view, viewItem.errorMessage) })
+                Modifier.clickable(onClick = { HUDManager.showErrorMessage(view, viewItem.errorMessage) })
             } else {
                 Modifier
             }

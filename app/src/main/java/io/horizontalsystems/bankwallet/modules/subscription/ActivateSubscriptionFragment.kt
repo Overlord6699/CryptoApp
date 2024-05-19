@@ -35,7 +35,7 @@ import io.horizontalsystems.bankwallet.ui.compose.components.ScreenMessageWithAc
 import io.horizontalsystems.bankwallet.ui.compose.components.TitleAndValueCell
 import io.horizontalsystems.bankwallet.ui.compose.components.TransactionInfoAddressCell
 import io.horizontalsystems.bankwallet.ui.compose.components.VSpacer
-import io.horizontalsystems.core.helpers.HudHelper
+import io.horizontalsystems.core.helpers.HUDManager
 import io.horizontalsystems.marketkit.models.BlockchainType
 
 class ActivateSubscriptionFragment : BaseComposeFragment() {
@@ -61,7 +61,7 @@ fun ActivateSubscriptionScreen(navController: NavController) {
     }
     LaunchedEffect(uiState.fetchingTokenError) {
         uiState.fetchingTokenError?.let { error ->
-            HudHelper.showErrorMessage(view, error.message ?: error.javaClass.simpleName)
+            HUDManager.showErrorMessage(view, error.message ?: error.javaClass.simpleName)
         }
     }
 

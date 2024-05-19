@@ -5,7 +5,6 @@ import android.os.Parcelable
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.os.bundleOf
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
@@ -16,7 +15,7 @@ import io.horizontalsystems.bankwallet.core.slideFromRight
 import io.horizontalsystems.bankwallet.modules.send.SendFragment
 import io.horizontalsystems.bankwallet.modules.tokenselect.TokenSelectScreen
 import io.horizontalsystems.bankwallet.modules.tokenselect.TokenSelectViewModel
-import io.horizontalsystems.core.helpers.HudHelper
+import io.horizontalsystems.core.helpers.HUDManager
 import io.horizontalsystems.marketkit.models.BlockchainType
 import io.horizontalsystems.marketkit.models.TokenType
 import kotlinx.parcelize.Parcelize
@@ -51,11 +50,11 @@ class SendTokenSelectFragment : BaseComposeFragment() {
                     }
 
                     it.syncingProgress.progress != null -> {
-                        HudHelper.showWarningMessage(view, R.string.Hud_WaitForSynchronization)
+                        HUDManager.showWarningMessage(view, R.string.Hud_WaitForSynchronization)
                     }
 
                     it.errorMessage != null -> {
-                        HudHelper.showErrorMessage(view, it.errorMessage ?: "")
+                        HUDManager.showErrorMessage(view, it.errorMessage ?: "")
                     }
                 }
             },

@@ -68,7 +68,7 @@ import io.horizontalsystems.bankwallet.ui.compose.components.VSpacer
 import io.horizontalsystems.bankwallet.ui.compose.components.body_grey
 import io.horizontalsystems.bankwallet.ui.compose.components.subhead2_grey
 import io.horizontalsystems.bankwallet.ui.extensions.RotatingCircleProgressView
-import io.horizontalsystems.core.helpers.HudHelper
+import io.horizontalsystems.core.helpers.HUDManager
 
 
 @Composable
@@ -169,7 +169,7 @@ private fun TokenBalanceHeader(
                     indication = null,
                     onClick = {
                         viewModel.toggleBalanceVisibility()
-                        HudHelper.vibrate(context)
+                        HUDManager.vibrate(context)
                     }
                 ),
             text = if (balanceViewItem.primaryValue.visible) balanceViewItem.primaryValue.value else "*****",
@@ -305,7 +305,7 @@ private fun onSyncErrorClicked(viewItem: BalanceViewItem, viewModel: TokenBalanc
         }
 
         is BalanceViewModel.SyncError.NetworkNotAvailable -> {
-            HudHelper.showErrorMessage(view, R.string.Hud_Text_NoInternet)
+            HUDManager.showErrorMessage(view, R.string.Hud_Text_NoInternet)
         }
     }
 }

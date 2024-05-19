@@ -50,7 +50,7 @@ import io.horizontalsystems.bankwallet.ui.compose.components.subhead1_grey
 import io.horizontalsystems.bankwallet.ui.compose.components.subhead2_grey
 import io.horizontalsystems.bankwallet.ui.helpers.LinkHelper
 import io.horizontalsystems.bankwallet.ui.helpers.TextHelper
-import io.horizontalsystems.core.helpers.HudHelper
+import io.horizontalsystems.core.helpers.HUDManager
 import io.horizontalsystems.core.parcelable
 import io.horizontalsystems.marketkit.models.Blockchain
 
@@ -239,7 +239,7 @@ private fun TopWalletCell(item: MajorHolderItem) {
             title = item.address.shorten(),
             onClick = {
                 TextHelper.copyText(item.address)
-                HudHelper.showSuccessMessage(localView, R.string.Hud_Text_Copied)
+                HUDManager.showSuccessMessage(localView, R.string.Hud_Text_Copied)
             }
         )
     }

@@ -24,7 +24,7 @@ import io.horizontalsystems.bankwallet.ui.compose.components.AppBar
 import io.horizontalsystems.bankwallet.ui.compose.components.HsBackButton
 import io.horizontalsystems.bankwallet.ui.compose.components.MenuItem
 import io.horizontalsystems.bankwallet.ui.helpers.TextHelper
-import io.horizontalsystems.core.helpers.HudHelper
+import io.horizontalsystems.core.helpers.HUDManager
 
 class EvmAddressFragment : BaseComposeFragment(screenshotEnabled = false) {
 
@@ -71,7 +71,7 @@ private fun EvmAddressScreen(evmAddress: String, navController: NavController) {
         }
         ActionButton(R.string.Alert_Copy) {
             TextHelper.copyText(evmAddress)
-            HudHelper.showSuccessMessage(view, R.string.Hud_Text_Copied)
+            HUDManager.showSuccessMessage(view, R.string.Hud_Text_Copied)
         }
     }
 }

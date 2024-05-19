@@ -4,7 +4,7 @@ import io.horizontalsystems.bankwallet.core.managers.CurrencyManager
 import io.horizontalsystems.bankwallet.core.managers.MarketKitWrapper
 import io.horizontalsystems.bankwallet.entities.Currency
 import io.horizontalsystems.bankwallet.modules.chart.AbstractChartService
-import io.horizontalsystems.bankwallet.modules.chart.ChartPointsWrapper
+import io.horizontalsystems.bankwallet.modules.chart.ChartPointsContainer
 import io.horizontalsystems.chartview.ChartViewType
 import io.horizontalsystems.chartview.models.ChartPoint
 import io.horizontalsystems.marketkit.models.HsTimePeriod
@@ -23,12 +23,12 @@ class CoinTvlChartService(
     override fun getItems(
         chartInterval: HsTimePeriod,
         currency: Currency
-    ): Single<ChartPointsWrapper> = try {
+    ): Single<ChartPointsContainer> = try {
         marketKit.marketInfoTvlSingle(coinUid, currency.code, chartInterval)
             .map { info ->
                 info.map { ChartPoint(it.value.toFloat(), it.timestamp) }
             }
-            .map { ChartPointsWrapper(it) }
+            .map { ChartPointsContainer(it) }
     } catch (e: Exception) {
         Single.error(e)
     }

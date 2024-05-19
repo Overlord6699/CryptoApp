@@ -39,7 +39,7 @@ import io.horizontalsystems.bankwallet.ui.compose.components.MenuItem
 import io.horizontalsystems.core.CustomSnackbar
 import io.horizontalsystems.core.SnackbarDuration
 import io.horizontalsystems.core.findNavController
-import io.horizontalsystems.core.helpers.HudHelper
+import io.horizontalsystems.core.helpers.HUDManager
 import io.horizontalsystems.core.parcelable
 import io.horizontalsystems.ethereumkit.models.Address
 import io.horizontalsystems.ethereumkit.models.TransactionData
@@ -102,7 +102,7 @@ class SendEvmConfirmationFragment : BaseComposeFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         sendEvmTransactionViewModel.sendingLiveData.observe(viewLifecycleOwner) {
-            snackbarInProcess = HudHelper.showInProcessMessage(
+            snackbarInProcess = HUDManager.showInProcessMessage(
                 requireView(),
                 R.string.Send_Sending,
                 SnackbarDuration.INDEFINITE
@@ -110,7 +110,7 @@ class SendEvmConfirmationFragment : BaseComposeFragment() {
         }
 
         sendEvmTransactionViewModel.sendSuccessLiveData.observe(viewLifecycleOwner) {
-            HudHelper.showSuccessMessage(
+            HUDManager.showSuccessMessage(
                 requireActivity().findViewById(android.R.id.content),
                 R.string.Hud_Text_Done
             )
@@ -120,7 +120,7 @@ class SendEvmConfirmationFragment : BaseComposeFragment() {
         }
 
         sendEvmTransactionViewModel.sendFailedLiveData.observe(viewLifecycleOwner) {
-            HudHelper.showErrorMessage(requireActivity().findViewById(android.R.id.content), it)
+            HUDManager.showErrorMessage(requireActivity().findViewById(android.R.id.content), it)
 
             findNavController().popBackStack()
         }

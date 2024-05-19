@@ -53,7 +53,7 @@ import io.horizontalsystems.bankwallet.ui.compose.components.VSpacer
 import io.horizontalsystems.bankwallet.ui.compose.components.body_jacob
 import io.horizontalsystems.bankwallet.ui.compose.components.body_leah
 import io.horizontalsystems.bankwallet.ui.compose.components.body_lucian
-import io.horizontalsystems.core.helpers.HudHelper
+import io.horizontalsystems.core.helpers.HUDManager
 
 class ManageAccountFragment : BaseComposeFragment() {
 
@@ -343,7 +343,7 @@ private fun AccountActionItem(
                 title = it,
                 onClick = {
                     clipboardManager.setText(AnnotatedString(it))
-                    HudHelper.showSuccessMessage(view, R.string.Hud_Text_Copied)
+                    HUDManager.showSuccessMessage(view, R.string.Hud_Text_Copied)
                 }
             )
         }

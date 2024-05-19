@@ -46,7 +46,7 @@ import io.horizontalsystems.bankwallet.ui.compose.components.MenuItem
 import io.horizontalsystems.bankwallet.ui.compose.components.TextImportantWarning
 import io.horizontalsystems.bankwallet.ui.helpers.TextHelper
 import io.horizontalsystems.core.findNavController
-import io.horizontalsystems.core.helpers.HudHelper
+import io.horizontalsystems.core.helpers.HUDManager
 
 class WC2SessionFragment : BaseComposeFragment() {
 
@@ -70,7 +70,7 @@ class WC2SessionFragment : BaseComposeFragment() {
         }
 
         viewModel.showErrorLiveEvent.observe(viewLifecycleOwner) {
-            HudHelper.showErrorMessage(requireView(), getString(R.string.Hud_Text_NoInternet))
+            HUDManager.showErrorMessage(requireView(), getString(R.string.Hud_Text_NoInternet))
         }
 
     }
@@ -112,7 +112,7 @@ private fun ColumnScope.WCSessionListContent(
     val uiState = viewModel.uiState
 
     val view = LocalView.current
-    uiState.showError?.let { HudHelper.showErrorMessage(view, it) }
+    uiState.showError?.let { HUDManager.showErrorMessage(view, it) }
 
     Column(
         modifier = Modifier

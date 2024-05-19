@@ -53,36 +53,43 @@ import io.horizontalsystems.bankwallet.ui.compose.TranslatableString
 import io.horizontalsystems.bankwallet.ui.compose.components.AppBar
 import io.horizontalsystems.bankwallet.ui.compose.components.MenuItem
 import io.horizontalsystems.bankwallet.ui.compose.components.title3_leah
-import io.horizontalsystems.core.helpers.HudHelper
+import io.horizontalsystems.core.helpers.HUDManager
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun BalanceForAccount(navController: NavController, accountViewItem: AccountViewItem) {
+    //сам виджет баланса
     val viewModel = viewModel<BalanceViewModel>(factory = BalanceModule.Factory())
-
+    //локальный контекст приложения
     val context = LocalContext.current
-    val invalidUrlBottomSheetState = rememberModalBottomSheetState(ModalBottomSheetValue.Hidden)
+    //состояние нижней панели при ошибке
+    val errorBottomSheetState = rememberModalBottomSheetState(ModalBottomSheetValue.Hidden)
     val coroutineScope = rememberCoroutineScope()
+    //сканер QR-кода для пополнения
     val qrScannerLauncher = rememberLauncherForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
         if (result.resultCode == Activity.RESULT_OK) {
+            //сканирование адреса
             viewModel.handleScannedData(result.data?.getStringExtra(ModuleField.SCAN_ADDRESS) ?: "")
         }
     }
-
+    //отображение ошибки при необходимости
     viewModel.uiState.errorMessage?.let { message ->
         val view = LocalView.current
-        HudHelper.showErrorMessage(view, text = message)
+        HUDManager.showErrorMessage(view, text = message)
         viewModel.errorShown()
     }
 
+    //отображение ошибки синхронизации и
+    //повторная попытка получить данные
     when (viewModel.connectionResult) {
         WalletConnectListViewModel.ConnectionResult.Error -> {
             LaunchedEffect(viewModel.connectionResult) {
+                //отображение ошибки спустя 300 миллисекунд
                 coroutineScope.launch {
                     delay(300)
-                    invalidUrlBottomSheetState.show()
+                    errorBottomSheetState.show()
                 }
             }
             viewModel.onHandleRoute()
@@ -94,7 +101,7 @@ fun BalanceForAccount(navController: NavController, accountViewItem: AccountView
 
     BackupAlert(navController)
     ModalBottomSheetLayout(
-        sheetState = invalidUrlBottomSheetState,
+        sheetState = errorBottomSheetState,
         sheetBackgroundColor = ComposeAppTheme.colors.transparent,
         sheetContent = {
             ConfirmationBottomSheet(
@@ -107,12 +114,12 @@ fun BalanceForAccount(navController: NavController, accountViewItem: AccountView
                 cancelText = stringResource(R.string.Button_Cancel),
                 onConfirm = {
                     coroutineScope.launch {
-                        invalidUrlBottomSheetState.hide()
+                        errorBottomSheetState.hide()
                         qrScannerLauncher.launch(QRScannerActivity.getScanQrIntent(context, true))
                     }
                 },
                 onClose = {
-                    coroutineScope.launch { invalidUrlBottomSheetState.hide() }
+                    coroutineScope.launch { errorBottomSheetState.hide() }
                 }
             )
         }
@@ -169,23 +176,34 @@ fun BalanceForAccount(navController: NavController, accountViewItem: AccountView
                 }
             )
 
+            //получение состояния экрана
             val uiState = viewModel.uiState
+
 
             Crossfade(uiState.viewState, label = "") { viewState ->
                 when (viewState) {
                     ViewState.Success -> {
-                        val balanceViewItems = uiState.balanceViewItems
+                        //получение данных монет
+                        val currencyViewItems = uiState.balanceViewItems
 
-                        if (balanceViewItems.isNotEmpty()) {
+                        //отображение списка токенов
+                        if (currencyViewItems.isNotEmpty()) {
                             BalanceItems(
-                                balanceViewItems,
+                                //данные монет
+                                currencyViewItems,
+                                //виджет
                                 viewModel,
+                                //виджет аккаунта
                                 accountViewItem,
+                                //контроллер навигации
                                 navController,
+                                //состояние UI
                                 uiState,
+                                //конечное состояние UI
                                 viewModel.totalUiState
                             )
                         } else {
+                            //отображение пустого экрана с подсказкой по добавлению токенов
                             BalanceItemsEmpty(navController)
                         }
                     }

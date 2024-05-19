@@ -11,7 +11,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import io.horizontalsystems.bankwallet.R
 import io.horizontalsystems.bankwallet.ui.helpers.TextHelper
-import io.horizontalsystems.core.helpers.HudHelper
+import io.horizontalsystems.core.helpers.HUDManager
 
 @Composable
 fun MessageToSign(message: String) {
@@ -31,7 +31,7 @@ fun MessageToSign(message: String) {
                         indication = null
                     ) {
                         TextHelper.copyText(formatted)
-                        HudHelper.showSuccessMessage(localView, R.string.Hud_Text_Copied)
+                        HUDManager.showSuccessMessage(localView, R.string.Hud_Text_Copied)
                     },
                 text = formatted
             )
