@@ -14,7 +14,7 @@ object SyncErrorModule {
             val service = SyncErrorService(
                 wallet,
                 App.adapterManager,
-                App.appConfigProvider.reportEmail,
+                "", //App.appConfigProvider.reportEmail,
                 App.btcBlockchainManager,
                 App.evmBlockchainManager
             )

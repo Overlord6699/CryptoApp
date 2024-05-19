@@ -167,7 +167,7 @@ private fun SettingSections(
 
     Spacer(Modifier.height(32.dp))
 
-    CellUniversalLawrenceSection(
+  /*  CellUniversalLawrenceSection(
         listOf(
         {
             HsSettingCell(
@@ -182,7 +182,7 @@ private fun SettingSections(
                 onClick = { LinkHelper.openLinkInAppBrowser(context, viewModel.appWebPageLink) }
             )
         })
-    )
+    )*/
     
     VSpacer(32.dp)
 }
@@ -225,7 +225,7 @@ private fun previewAboutScreen() {
         Column {
             AboutHeader("0.24")
             Spacer(Modifier.height(32.dp))
-            CellSingleLineLawrenceSection(
+          /*  CellSingleLineLawrenceSection(
                 listOf({
                     HsSettingCell(
                         R.string.Settings_RateUs,
@@ -240,7 +240,7 @@ private fun previewAboutScreen() {
                         onClick = { }
                     )
                 })
-            )
+            )*/
         }
     }
 }

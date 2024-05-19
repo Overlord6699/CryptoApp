@@ -44,10 +44,10 @@ class ContactOptionsDialog : BaseComposableBottomSheetFragment() {
                 ViewCompositionStrategy.DisposeOnLifecycleDestroyed(viewLifecycleOwner)
             )
             setContent {
-                ContactOptionsScreen(
+           /*     ContactOptionsScreen(
                     findNavController(),
                     App.appConfigProvider.reportEmail
-                ) { close() }
+                ) { close() }*/
             }
         }
     }

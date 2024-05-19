@@ -48,7 +48,7 @@ object LocaleHelper {
         var tag = systemLocale.toLanguageTag()
 
         //App language tags are in the format "en", except "pt-BR"
-        if (tag.contains("-") && tag != LocaleType.pt_br.tag) {
+        if (tag.contains("-")) {
             tag = tag.split("-")[0]
         }
 
@@ -103,14 +103,14 @@ object LocaleHelper {
 }
 
 enum class LocaleType(val tag: String) {
-    de("de"),
+    //de("de"),
     en("en"),
-    es("es"),
+/*    es("es"),
     pt_br("pt-BR"),
     fa("fa"),
     fr("fr"),
-    ko("ko"),
-    ru("ru"),
-    tr("tr"),
-    zh("zh");
+    ko("ko"),*/
+    ru("ru");
+/*    tr("tr"),
+    zh("zh");*/
 }

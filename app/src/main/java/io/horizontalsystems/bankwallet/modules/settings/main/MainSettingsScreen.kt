@@ -139,7 +139,7 @@ private fun SettingSections(
 
     VSpacer(32.dp)
 
-    CellUniversalLawrenceSection(
+/*    CellUniversalLawrenceSection(
         listOf {
             HsSettingCell(
                 R.string.Settings_WalletConnect,
@@ -171,7 +171,7 @@ private fun SettingSections(
                 }
             )
         }
-    )
+    )*/
 
     VSpacer(32.dp)
 
@@ -187,7 +187,7 @@ private fun SettingSections(
                     }
                 )
             },
-            {
+/*            {
                 HsSettingCell(
                     R.string.Contacts,
                     R.drawable.ic_user_20,
@@ -195,7 +195,7 @@ private fun SettingSections(
                         navController.slideFromRight(R.id.contactsFragment, ContactsFragment.prepareParams(Mode.Full))
                     }
                 )
-            },
+            },*/
             {
                 HsSettingCell(
                     R.string.Settings_Appearance,
@@ -230,7 +230,7 @@ private fun SettingSections(
 
     VSpacer(32.dp)
 
-    CellUniversalLawrenceSection(
+   /* CellUniversalLawrenceSection(
         listOf({
             HsSettingCell(
                 R.string.Settings_Faq,
@@ -248,11 +248,11 @@ private fun SettingSections(
                 }
             )
         })
-    )
+    )*/
 
     VSpacer(32.dp)
 
-    CellUniversalLawrenceSection(
+/*    CellUniversalLawrenceSection(
         listOf {
             HsSettingCell(
                 R.string.Settings_ExperimentalFeatures,
@@ -262,11 +262,11 @@ private fun SettingSections(
                 }
             )
         }
-    )
+    )*/
 
     VSpacer(32.dp)
 
-    CellUniversalLawrenceSection(
+/*    CellUniversalLawrenceSection(
         listOf {
             HsSettingCell(
                 R.string.SettingsAboutApp_Title,
@@ -277,11 +277,11 @@ private fun SettingSections(
                 }
             )
         }
-    )
+    )*/
 
     VSpacer(32.dp)
 
-    CellUniversalLawrenceSection(
+  /*  CellUniversalLawrenceSection(
         listOf({
             HsSettingCell(
                 R.string.Settings_RateUs,
@@ -301,7 +301,7 @@ private fun SettingSections(
                 onClick = { navController.slideFromBottom(R.id.contactOptionsDialog) },
             )
         })
-    )
+    )*/
 
     VSpacer(32.dp)
 }
@@ -413,7 +413,7 @@ private fun shareAppLink(appLink: String, context: Context) {
 @Preview
 @Composable
 private fun previewSettingsScreen() {
-    ComposeAppTheme {
+  /*  ComposeAppTheme {
         Column {
             CellSingleLineLawrenceSection(
                 listOf({
@@ -445,5 +445,5 @@ private fun previewSettingsScreen() {
                 }
             )
         }
-    }
+    }*/
 }

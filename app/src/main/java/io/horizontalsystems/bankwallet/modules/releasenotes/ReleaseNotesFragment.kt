@@ -97,12 +97,12 @@ fun ReleaseNotesScreen(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Spacer(Modifier.padding(start = 16.dp))
-                IconButton(
+/*                IconButton(
                     R.drawable.ic_twitter_filled_24,
                     viewModel.twitterUrl,
                     stringResource(R.string.CoinPage_Twitter)
-                )
-                IconButton(
+                )*/
+/*                IconButton(
                     R.drawable.ic_telegram_filled_24,
                     viewModel.telegramUrl,
                     stringResource(R.string.CoinPage_Telegram)
@@ -111,7 +111,7 @@ fun ReleaseNotesScreen(
                     R.drawable.ic_reddit_filled_24,
                     viewModel.redditUrl,
                     stringResource(R.string.CoinPage_Reddit)
-                )
+                )*/
 
                 Spacer(Modifier.weight(1f))
 
