@@ -10,7 +10,7 @@ object ReleaseNotesModule {
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
             return ReleaseNotesViewModel(
                 App.networkManager,
-                App.releaseNotesManager.releaseNotesUrl,
+                "",//App.releaseNotesManager.releaseNotesUrl,
                 App.connectivityManager,
                 App.appConfigProvider
             ) as T

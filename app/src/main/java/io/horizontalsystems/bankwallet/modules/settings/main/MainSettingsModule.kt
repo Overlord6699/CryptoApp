@@ -23,7 +23,7 @@ object MainSettingsModule {
             )
             val viewModel = MainSettingsViewModel(
                 service,
-                App.appConfigProvider.companyWebPageLink,
+                "",//App.appConfigProvider.companyWebPageLink,
             )
 
             return viewModel as T

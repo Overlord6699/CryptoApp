@@ -14,8 +14,8 @@ class ReleaseNotesManager(
         systemInfoManager.appVersion
     }
 
-    val releaseNotesUrl =
-        "${appConfigProvider.releaseNotesUrl}${Version(currentAppVersion).versionForUrl}"
+/*    val releaseNotesUrl =
+        "${appConfigProvider.releaseNotesUrl}${Version(currentAppVersion).versionForUrl}"*/
 
     fun shouldShowChangeLog(): Boolean {
         val shownForVersion = localStorage.changelogShownForAppVersion
