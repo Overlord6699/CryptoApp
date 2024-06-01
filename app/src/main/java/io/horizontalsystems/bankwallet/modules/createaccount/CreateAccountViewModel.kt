@@ -157,9 +157,6 @@ class CreateAccountViewModel(
     }
 
     private fun mnemonicAccountType(wordCount: Int): AccountType {
-        // A new account can be created only using an English wordlist and limited chars in the passphrase.
-        // Despite it, we add text normalizing.
-        // It is to avoid potential issues if we allow non-English wordlists on account creation.
         val words = wordsManager.generateWords(wordCount).map { it.normalizeNFKD() }
         return AccountType.Mnemonic(words, passphrase.normalizeNFKD())
     }
