@@ -54,8 +54,6 @@ import io.horizontalsystems.bankwallet.modules.balance.HeaderNote
 import io.horizontalsystems.bankwallet.modules.balance.ReceiveAllowedState
 import io.horizontalsystems.bankwallet.modules.balance.TotalUIState
 import io.horizontalsystems.bankwallet.modules.manageaccount.dialogs.BackupRequiredDialog
-import io.horizontalsystems.bankwallet.modules.rateapp.RateAppModule
-import io.horizontalsystems.bankwallet.modules.rateapp.RateAppViewModel
 import io.horizontalsystems.bankwallet.modules.sendtokenselect.SendTokenSelectFragment
 import io.horizontalsystems.bankwallet.ui.compose.ComposeAppTheme
 import io.horizontalsystems.bankwallet.ui.compose.HSSwipeRefresh
@@ -175,13 +173,6 @@ fun BalanceItems(
     uiState: BalanceUiState,
     totalState: TotalUIState
 ) {
-    val rateAppViewModel = viewModel<RateAppViewModel>(factory = RateAppModule.Factory())
-    DisposableEffect(true) {
-        rateAppViewModel.onBalancePageActive()
-        onDispose {
-            rateAppViewModel.onBalancePageInactive()
-        }
-    }
 
     val context = LocalContext.current
     var revealedCardId by remember { mutableStateOf<Int?>(null) }

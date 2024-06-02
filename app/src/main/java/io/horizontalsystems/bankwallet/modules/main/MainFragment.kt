@@ -231,17 +231,6 @@ private fun MainScreen(
         }
     }
 
-    if (uiState.showRateAppDialog) {
-        val context = LocalContext.current
-        RateApp(
-            onRateClick = {
-                RateAppManager.openPlayMarket(context)
-                viewModel.closeRateDialog()
-            },
-            onCancelClick = { viewModel.closeRateDialog() }
-        )
-    }
-
     if (uiState.wcSupportState != null) {
         when (val wcSupportState = uiState.wcSupportState) {
             SupportState.NotSupportedDueToNoActiveAccount -> {

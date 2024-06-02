@@ -33,7 +33,6 @@ import kotlinx.coroutines.launch
 
 class MainViewModel(
     private val pinComponent: IPinComponent,
-    rateAppManager: IRateAppManager,
     private val backupManager: IBackupManager,
     private val termsManager: ITermsManager,
     private val accountManager: IAccountManager,
@@ -101,7 +100,6 @@ class MainViewModel(
             selectedTabIndex = selectedTabIndex,
             deeplinkPage = deeplinkPage,
             mainNavItems = mainNavItems,
-            showRateAppDialog = showRateAppDialog,
             contentHidden = contentHidden,
             showWhatsNew = showWhatsNew,
             activeWallet = activeWallet,
@@ -126,10 +124,6 @@ class MainViewModel(
             updateSettingsBadge()
         }
 
-        rateAppManager.showRateAppFlow.collectWith(viewModelScope) {
-            showRateAppDialog = it
-            syncState()
-        }
 
         disposables.add(backupManager.allBackedUpFlowable.subscribe {
             updateSettingsBadge()
@@ -216,7 +210,6 @@ class MainViewModel(
             selectedTabIndex = selectedTabIndex,
             deeplinkPage = deeplinkPage,
             mainNavItems = mainNavItems,
-            showRateAppDialog = showRateAppDialog,
             contentHidden = contentHidden,
             showWhatsNew = showWhatsNew,
             activeWallet = activeWallet,
