@@ -72,13 +72,16 @@
 \n\nПОЖАЛУЙСТА НАЖМИТЕ, ЧТОБЫ ПОЛУЧИТЬ БОЛЬШЕ ИНФОРМАЦИИ</string>
     <string name="AccountRecovery_MigrationRequired">Это нестандартный кошелек.\n\nНАЖМИТЕ, ЧТОБЫ ПОЛУЧИТЬ БОЛЬШЕ ИНФОРМАЦИИ</string>
     <!--Intro-->
-    <string name="Intro_Wallet_Screen1Description">Отслеживай ВСЁ</string>
-    <string name="Intro_Wallet_Screen2Title">Непривязанные активы</string>
-    <string name="Intro_Wallet_Screen2Description">Распоряжайтесь активами свободно и без ограничений.</string>
-    <string name="Intro_Wallet_Screen3Title">Избавьтесь от границ</string>
-    <string name="Intro_Wallet_Screen3Description">Преодолейте барьеры и получите доступ к рынкам.</string>
-    <string name="Intro_Wallet_Screen4Title">Сохраняйте конфиденциальность</string>
-    <string name="Intro_Wallet_Screen4Description">Не допускайте утечку личных и финансовых данных.</string>
+    <string name="Intro_Wallet_Screen1Title">Изучайте проекты</string>
+    <string name="Intro_Wallet_Screen1Description">Находите новые проекты и изучайте их достоинства и недостатки.</string>
+    <string name="Intro_Wallet_Screen2Title">Анализируйте ВСЁ</string>
+    <string name="Intro_Wallet_Screen2Description">Проводите анализ проектов и токенов при помощи разнообразных метрик.</string>
+    <string name="Intro_Wallet_Screen3Title">Будь защищённым</string>
+    <string name="Intro_Wallet_Screen3Description">Храните ваши данные в зашифрованном виде.</string>
+    <string name="Intro_Wallet_Screen4Title">Наблюдайте за метриками</string>
+    <string name="Intro_Wallet_Screen4Description">Наблюдайте за метриками проектов, рыночным состоянием, новостным фоном и оставайтесь в курсе новостей.</string>
+    <string name="Intro_Wallet_Screen5Title">Оставайся конфиденциальным</string>
+    <string name="Intro_Wallet_Screen5Description">Ваши данные хранятся только локально на устройстве.</string>
     <!--Rooted Device-->
     <string name="RootedDevice_Button_Understand">Я понимаю</string>
     <!--Welcome-->

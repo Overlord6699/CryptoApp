@@ -67,7 +67,7 @@ class IntroActivity : BaseActivity() {
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 private fun IntroScreen(viewModel: IntroViewModel, nightMode: Boolean, closeActivity: () -> Unit) {
-    val pageCount = 3
+    val pageCount = viewModel.vidgets.size
     val pagerState = rememberPagerState(initialPage = 0) { pageCount }
     ComposeAppTheme {
         Box {

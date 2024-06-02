@@ -12,22 +12,34 @@ class IntroViewModel(
     //виджеты на входе в приложение
     val vidgets = listOf(
         IntroModule.IntroSliderData(
+            R.string.Intro_Wallet_Screen1Title,
+            R.string.Intro_Wallet_Screen1Description,
+            R.drawable.projects,
+            R.drawable.projects
+        ),
+        IntroModule.IntroSliderData(
             R.string.Intro_Wallet_Screen2Title,
             R.string.Intro_Wallet_Screen2Description,
-            R.drawable.ic_independence_light,
-            R.drawable.ic_independence
+            R.drawable.analytics,
+            R.drawable.analytics
         ),
         IntroModule.IntroSliderData(
             R.string.Intro_Wallet_Screen3Title,
             R.string.Intro_Wallet_Screen3Description,
-            R.drawable.ic_knowledge_light,
-            R.drawable.ic_knowledge
+            R.drawable.security,
+            R.drawable.security
         ),
         IntroModule.IntroSliderData(
             R.string.Intro_Wallet_Screen4Title,
             R.string.Intro_Wallet_Screen4Description,
-            R.drawable.ic_privacy_light,
-            R.drawable.ic_privacy
+            R.drawable.metrics,
+            R.drawable.metrics
+        ),
+        IntroModule.IntroSliderData(
+            R.string.Intro_Wallet_Screen5Title,
+            R.string.Intro_Wallet_Screen5Description,
+            R.drawable.personal,
+            R.drawable.personal
         ),
     )
 

@@ -85,14 +85,16 @@
     <string name="AccountRecovery_MigrationRequired">This is a non-standard wallet. \n\nCLICK TO GET MORE INFO</string>
 
     <!--Intro-->
-
-    <string name="Intro_Wallet_Screen1Description">Track EVERYTHING</string>
-    <string name="Intro_Wallet_Screen2Title">Unchain Assets</string>
-    <string name="Intro_Wallet_Screen2Description">Don\'t lock yourself in and don\'t let others do that to you.</string>
-    <string name="Intro_Wallet_Screen3Title">Go Borderless</string>
-    <string name="Intro_Wallet_Screen3Description">Bypass conditional barriers and access markets globally.</string>
-    <string name="Intro_Wallet_Screen4Title">Stay Private</string>
-    <string name="Intro_Wallet_Screen4Description">Do not leak your private and financial data to the world.</string>
+    <string name="Intro_Wallet_Screen1Title">Learn new projects</string>
+    <string name="Intro_Wallet_Screen1Description">Find new projects and explore their strengths and weaknesses.</string>
+    <string name="Intro_Wallet_Screen2Title">Analyze EVERYTHING</string>
+    <string name="Intro_Wallet_Screen2Description">Analyze projects and tokens using a variety of metrics.</string>
+    <string name="Intro_Wallet_Screen3Title">Stay secured</string>
+    <string name="Intro_Wallet_Screen3Description">Store your data in an encrypted format.</string>
+    <string name="Intro_Wallet_Screen4Title">Monitor the metrics</string>
+    <string name="Intro_Wallet_Screen4Description">Monitor project metrics, market conditions, news background and stay informed.</string>
+    <string name="Intro_Wallet_Screen5Title">Remain confidential</string>
+    <string name="Intro_Wallet_Screen5Description">Your data is stored only locally on the device.</string>
 
     <!--Rooted Device-->
 
